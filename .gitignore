@@ -1,0 +1,30 @@
+# Dependency directories
+node_modules/
+
+# Build files
+build/
+dist/
+
+# Environment variables
+.env*
+
+# IDE files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Mac OS files
+.DS_Store
+
+# Jest test results
+test-results/
+
+# Ignore yarn error logs
+yarn-error.log
+
+# Ignore coverage directory
+coverage/
+
+.env.local

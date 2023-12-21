@@ -7,7 +7,7 @@ import './App.css'
 
 
 const WeatherComponent = (props) => {
-    const { city, country, temperature, conditions, wind, winddeg, pressure, humidity, sunrise, sunset, weathericon, lon, lat, forecastDataList, onDelete } = props;
+    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelsLike, sunrise, sunset, airPollution, weathericon, lon, lat, forecastDataList, onDelete } = props;
 
     // const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
@@ -39,6 +39,72 @@ const WeatherComponent = (props) => {
         const currentDayOfWeek = daysOfWeek[dayIndex];
         return currentDayOfWeek;
     }
+
+    const airQuality = (airPollution) => {
+        let airQual = '';
+        switch (airPollution) {
+            case 1:
+                airQual = 'Good';
+                break;
+            case 2:
+                airQual = 'Fair';
+                break;
+            case 3:
+                airQual = 'Moderade';
+                break;
+            case 4:
+                airQual = "Poor";
+                break;
+            case 5:
+                airQual = "Very Poor";
+                break;
+            default:
+                airQual = 'Unknown';
+        }
+
+        return airQual;
+
+    }
+
+    const windDirection = (winddeg) => {
+        let windDir = '';
+    
+        if ((winddeg >= 350 && winddeg <= 360) || (winddeg >= 0 && winddeg <= 10)) {
+            windDir = 'N';
+        } else if (winddeg >= 20 && winddeg <= 30) {
+            windDir = 'N/NE';
+        } else if (winddeg >= 40 && winddeg <= 50) {
+            windDir = 'NE';
+        } else if (winddeg >= 60 && winddeg <= 70) {
+            windDir = 'E/NE';
+        } else if (winddeg >= 80 && winddeg <= 100) {
+            windDir = 'E';
+        } else if (winddeg >= 110 && winddeg <= 120) {
+            windDir = 'E/SE';
+        } else if (winddeg >= 130 && winddeg <= 140) {
+            windDir = 'SE';
+        } else if (winddeg >= 150 && winddeg <= 160) {
+            windDir = 'S/SE';
+        } else if (winddeg >= 170 && winddeg <= 190) {
+            windDir = 'S';
+        } else if (winddeg >= 200 && winddeg <= 210) {
+            windDir = 'S/SW';
+        } else if (winddeg >= 220 && winddeg <= 230) {
+            windDir = 'SW';
+        } else if (winddeg >= 240 && winddeg <= 250) {
+            windDir = 'W/SW';
+        } else if (winddeg >= 260 && winddeg <= 280) {
+            windDir = 'W';
+        } else if (winddeg >= 290 && winddeg <= 300) {
+            windDir = 'W/NW';
+        } else if (winddeg >= 310 && winddeg <= 320) {
+            windDir = 'NW';
+        } else if (winddeg >= 330 && winddeg <= 340) {
+            windDir = 'N/NW';
+        }
+    
+        return windDir;
+    };
 
     if (loadError) {
         return <div>Error loading maps</div>;
@@ -75,8 +141,9 @@ const WeatherComponent = (props) => {
 
                         <div className="wind">
                             <p>Wind</p>
-                            <p>{wind}</p>
-                            <p>{winddeg}</p>
+                            <p>{windspeed} MPH</p>
+                            <p>{winddeg + '\u00B0'} {windDirection(winddeg)}</p>
+                            
 
                         </div>
 
@@ -110,13 +177,22 @@ const WeatherComponent = (props) => {
                         </div>
 
                         <div className="pressure">
-                                <p>Pressure</p>
-                                <p>{pressure}</p>
-                                
+                            <p>Pressure</p>
+                            <p>{pressure}</p>
+
                         </div>
 
                         <div className="airQuality">
-                                <p>Air Quality</p>
+                            <p>Air Quality</p>
+                            <p>{airPollution}</p>
+                            <p>{airQuality(airPollution)}</p>
+                            <input type="range" min="0" max="5" value={airPollution} disabled="true" className="airQualSlider"></input>
+                        </div>
+
+                        <div className="feelsLike">
+                            <p> Feels Like</p>
+                            <p>{feelsLike}</p>
+
                         </div>
 
 

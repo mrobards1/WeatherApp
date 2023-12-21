@@ -34,10 +34,10 @@ function Weather() {
           .then(forecastData => {
             setForecastData(forecastData);
 
-        // fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}`)
-        //     .then(response => response.json())
-        //     .then(airPollution => {
-        //       setAirPollution(airPollution);
+        fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`)
+            .then(response => response.json())
+            .then(airPollution => {
+              setAirPollution(airPollution);
             
             
   
@@ -49,13 +49,14 @@ function Weather() {
                   country={data.sys.country}
                   temperature={Math.round(data.main.temp)}
                   conditions={data.weather[0].description}
-                  wind={data.wind.speed}
+                  windspeed={Math.round(data.wind.speed)}
                   winddeg={data.wind.deg}
                   pressure={data.main.pressure}
                   humidity={data.main.humidity}
+                  feelslike={data.main.feels_like}
                   sunrise={data.sys.sunrise}
                   sunset={data.sys.sunset}
-
+                  airPollution={airPollution.list[0].main.aqi}
                   weathericon={data.weather[0].icon}
                   onDelete={() => handleDelete(componentInstances.length)}
                   lon={data.coord.lon}
@@ -67,7 +68,7 @@ function Weather() {
               setComponentInstances(prevInstances => [...prevInstances, newWeatherComponent]);
             });
             });
-        // });
+        });
     }
   };
   

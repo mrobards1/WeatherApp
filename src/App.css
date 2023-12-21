@@ -213,3 +213,24 @@
   border-radius: 10px;
 }
 
+.airQualSlider {
+  width: 80%;
+  height: 5px;
+  background: linear-gradient(to right, green, yellow,red); /* Adjust gradient colors as needed */
+  border: none;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.airQualSlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 5px;
+  height: 5px;
+  background-color: #ffffff;
+  border: 0.5px solid black;
+  border-radius: 50%;
+}
+

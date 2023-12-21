@@ -1,0 +1,2602 @@
+global:
+  poi:
+    default:
+      visible: true
+    computePriority: |
+      function (basePriority, feature) {
+        return (basePriority * 1000 + (feature.min_zoom || 0)) / 1000;
+      }
+sources:
+  omv:
+    extra_data:
+      poi:
+        default:
+          100-1000-0000:
+            default:
+              default:
+                icon: poi--restaurant
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 131
+          100-1000-0001:
+            default:
+              default:
+                icon: poi--restaurant
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 132
+          100-1000-0002:
+            default:
+              default:
+                icon: poi--restaurant
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 133
+          100-1000-0003:
+            default:
+              default:
+                icon: poi--restaurant
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 134
+          100-1000-0004:
+            default:
+              default:
+                icon: poi--restaurant
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 135
+          100-1000-0005:
+            default:
+              default:
+                icon: poi--restaurant
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 136
+          100-1000-0006:
+            default:
+              default:
+                icon: poi--restaurant
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 137
+          100-1000-0007:
+            default:
+              default:
+                icon: poi--restaurant
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 138
+          100-1000-0008:
+            default:
+              default:
+                icon: poi--restaurant
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 139
+          100-1000-0009:
+            default:
+              default:
+                icon: poi--fast-food
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 140
+          100-1100-0000:
+            default:
+              default:
+                icon: poi--coffee
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 142
+          100-1100-0010:
+            default:
+              default:
+                icon: poi--coffee
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 143
+          100-1100-0331:
+            default:
+              default:
+                icon: poi--coffee
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 144
+          200-2000-0000:
+            default:
+              default:
+                icon: poi--night-club
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 156
+          200-2000-0011:
+            default:
+              default:
+                icon: poi--pub
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 145
+          200-2000-0012:
+            default:
+              default:
+                icon: poi--night-club
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 146
+          200-2000-0013:
+            default:
+              default:
+                icon: poi--night-club
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 147
+          200-2000-0014:
+            default:
+              default:
+                icon: poi--karaoke
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 148
+          200-2000-0015:
+            default:
+              default:
+                icon: poi--night-club
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 149
+          200-2000-0016:
+            default:
+              default:
+                icon: poi--pool
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 150
+          200-2000-0017:
+            default:
+              default:
+                icon: poi--game-arcade
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 151
+          200-2000-0018:
+            default:
+              default:
+                icon: poi--night-club
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 152
+          200-2000-0019:
+            default:
+              default:
+                icon: poi--pub
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 153
+          200-2000-0306:
+            default:
+              default:
+                icon: poi--night-club
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 154
+          200-2000-0368:
+            default:
+              default:
+                icon: poi--cocktail
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 155
+          200-2100-0019:
+            default:
+              default:
+                icon: poi--cinema
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 55
+          200-2200-0000:
+            default:
+              default:
+                icon: poi--generic-point_entertainment
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 121
+          200-2200-0020:
+            default:
+              default:
+                icon: poi--theater
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 56
+          200-2300-0000:
+            default:
+              default:
+                icon: poi--casino
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 157
+          200-2300-0021:
+            default:
+              default:
+                icon: poi--casino
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 158
+          200-2300-0022:
+            default:
+              default:
+                icon: poi--travel-agent-ticketing
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 159
+          300-3000-0000:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 67
+          300-3000-0023:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 49
+          300-3000-0024:
+            default:
+              default:
+                icon: poi--art-gallery
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 160
+          300-3000-0025:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 13
+          300-3000-0030:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 50
+          300-3000-0065:
+            default:
+              default:
+                icon: poi--generic-point_sights-museum
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 89
+          300-3000-0350:
+            default:
+              default:
+                icon: poi--generic-point_sights-museum
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 90
+          300-3000-0351:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 91
+          300-3100-0000:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 54
+          300-3100-0026:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 51
+          300-3100-0027:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 88
+          300-3100-0028:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 52
+          300-3100-0029:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 53
+          300-3200-0000:
+            default:
+              default:
+                icon: poi--religious-place
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 239
+          300-3200-0030:
+            default:
+              default:
+                icon: poi--religious-place
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 232
+          300-3200-0031:
+            default:
+              default:
+                icon: poi--religious-place
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 233
+          300-3200-0032:
+            default:
+              default:
+                icon: poi--religious-place
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 234
+          300-3200-0033:
+            default:
+              default:
+                icon: poi--religious-place
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 235
+          300-3200-0034:
+            default:
+              default:
+                icon: poi--religious-place
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 236
+          300-3200-0309:
+            default:
+              default:
+                icon: poi--religious-place
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 237
+          300-3200-0375:
+            default:
+              default:
+                icon: poi--religious-place
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 238
+          350-3500-0300:
+            default:
+              default:
+                icon: poi--harbor
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 70
+          350-3510-0237:
+            default:
+              default:
+                icon: poi--mountain-pass
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 96
+          350-3510-0238:
+            default:
+              default:
+                icon: poi--mountain
+                min_zoom: 9
+                size:
+                  - 20
+                  - 20
+                priority: 0
+          400-4000-4580:
+            default:
+              default:
+                icon: poi--airport
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 162
+          400-4000-4581:
+            default:
+              default:
+                icon: poi--airport
+                min_zoom: 10
+                size:
+                  - 20
+                  - 26
+                priority: 1
+          400-4000-4582:
+            default:
+              default:
+                icon: poi--airport
+                min_zoom: 14
+                size:
+                  - 20
+                  - 26
+                priority: 6
+          400-4100-0035:
+            default:
+              default:
+                icon: poi--train
+                min_zoom: 12
+                size:
+                  - 20
+                  - 26
+                priority: 2
+          400-4100-0036:
+            default:
+              default:
+                icon: poi--bus
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 33
+          400-4100-0037:
+            default:
+              default:
+                icon: poi--metro
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 24
+          400-4100-0038:
+            default:
+              default:
+                icon: poi--rail-regional
+                min_zoom: 14
+                size:
+                  - 20
+                  - 26
+                priority: 4
+          400-4100-0039:
+            default:
+              default:
+                icon: poi--rail-regional
+                min_zoom: 14
+                size:
+                  - 20
+                  - 26
+                priority: 5
+          400-4100-0042:
+            default:
+              default:
+                icon: poi--bus
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 38
+          400-4100-0044:
+            default:
+              default:
+                icon: poi--ferry
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 15
+          400-4100-0045:
+            default:
+              default:
+                icon: poi--ferry
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 16
+          400-4100-0046:
+            default:
+              default:
+                icon: poi--train
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 20
+          400-4100-0047:
+            default:
+              default:
+                icon: poi--taxi
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 119
+          400-4100-0051:
+            default:
+              default:
+                icon: poi--taxi
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 120
+          400-4100-0326:
+            default:
+              default:
+                icon: poi--toll-booth
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 46
+          400-4100-0337:
+            default:
+              default:
+                icon: poi--rail-light
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 39
+          400-4100-0338:
+            default:
+              default:
+                icon: poi--ferry
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 30
+          400-4100-0339:
+            default:
+              default:
+                icon: poi--monorail
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 40
+          400-4100-0340:
+            default:
+              default:
+                icon: poi--cable-way
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 41
+          400-4100-0342:
+            default:
+              default:
+                icon: poi--inclined
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 42
+          400-4300-0000:
+            default:
+              default:
+                icon: poi--picnic-area
+                min_zoom: 14
+                size:
+                  - 20
+                  - 26
+                priority: 7
+          400-4300-0199:
+            default:
+              default:
+                icon: poi--picnic-area
+                min_zoom: 14
+                size:
+                  - 20
+                  - 26
+                priority: 8
+          400-4300-0200:
+            default:
+              default:
+                icon: poi--picnic-area
+                min_zoom: 14
+                size:
+                  - 20
+                  - 26
+                priority: 9
+          400-4300-0201:
+            default:
+              default:
+                icon: poi--picnic-area
+                min_zoom: 14
+                size:
+                  - 20
+                  - 26
+                priority: 10
+          400-4300-0202:
+            default:
+              default:
+                icon: poi--picnic-area
+                min_zoom: 14
+                size:
+                  - 20
+                  - 26
+                priority: 11
+          400-4300-0308:
+            default:
+              default:
+                icon: poi--nature-overlook
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 19
+          500-5000-0000:
+            default:
+              default:
+                icon: poi--hotel
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 107
+          500-5000-0053:
+            default:
+              default:
+                icon: poi--hotel
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 99
+          500-5000-0054:
+            default:
+              default:
+                icon: poi--hotel
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 100
+          500-5100-0000:
+            default:
+              default:
+                icon: poi--hotel
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 101
+          500-5100-0055:
+            default:
+              default:
+                icon: poi--hotel
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 102
+          500-5100-0056:
+            default:
+              default:
+                icon: poi--camping
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 84
+          500-5100-0057:
+            default:
+              default:
+                icon: poi--hotel
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 103
+          500-5100-0058:
+            default:
+              default:
+                icon: poi--hotel
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 104
+          500-5100-0059:
+            default:
+              default:
+                icon: poi--hotel
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 105
+          500-5100-0060:
+            default:
+              default:
+                icon: poi--hotel
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 106
+          550-5510-0000:
+            default:
+              default:
+                icon: poi--nature
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 80
+          550-5510-0202:
+            default:
+              default:
+                icon: poi--nature
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 81
+          550-5510-0204:
+            default:
+              default:
+                icon: poi--nature
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 82
+          550-5510-0205:
+            default:
+              default:
+                icon: poi--beach
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 63
+          550-5510-0242:
+            default:
+              default:
+                icon: poi--nature-overlook
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 57
+          550-5510-0359:
+            default:
+              default:
+                icon: poi--generic-point_leisure-outdoor
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 98
+          550-5510-0378:
+            default:
+              default:
+                icon: poi--camping
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 85
+          550-5520-0000:
+            default:
+              default:
+                icon: poi--amusement-park
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 66
+          550-5520-0207:
+            default:
+              default:
+                icon: poi--amusement-park
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 27
+          550-5520-0208:
+            default:
+              default:
+                icon: poi--zoo
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 58
+          550-5520-0209:
+            default:
+              default:
+                icon: poi--zoo
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 59
+          550-5520-0211:
+            default:
+              default:
+                icon: poi--attraction
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 60
+          550-5520-0212:
+            default:
+              default:
+                icon: poi--ski-run
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 87
+          550-5520-0228:
+            default:
+              default:
+                icon: poi--zoo
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 61
+          600-6000-0061:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 166
+          600-6100-0062:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 14
+          600-6200-0063:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 122
+          600-6300-0066:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 123
+          600-6400-0000:
+            default:
+              default:
+                icon: poi--pharmacy
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 163
+          600-6400-0069:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 164
+          600-6400-0070:
+            default:
+              default:
+                icon: poi--pharmacy
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 165
+          600-6500-0072:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 167
+          600-6600-0000:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 124
+          600-6600-0077:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 125
+          600-6600-0078:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 126
+          600-6600-0079:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 127
+          600-6600-0080:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 128
+          600-6600-0082:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 129
+          600-6700-0000:
+            default:
+              default:
+                icon: poi--bookstore
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 183
+          600-6700-0087:
+            default:
+              default:
+                icon: poi--bookstore
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 184
+          600-6800-0000:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 168
+          600-6800-0089:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 169
+          600-6800-0090:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 170
+          600-6800-0091:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 171
+          600-6800-0092:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 172
+          600-6800-0093:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 173
+          600-6900-0000:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 174
+          600-6900-0094:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 175
+          600-6900-0096:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 176
+          600-6900-0098:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 177
+          600-6900-0106:
+            default:
+              default:
+                icon: poi--generic-point_shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 178
+          600-6900-0247:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 179
+          600-6900-0248:
+            default:
+              default:
+                icon: poi--generic-point_shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 180
+          600-6900-0251:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 181
+          600-6900-0358:
+            default:
+              default:
+                icon: poi--shopping
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 182
+          700-7000-0107:
+            default:
+              default:
+                icon: poi--bank
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 185
+          700-7010-0108:
+            default:
+              default:
+                icon: poi--atm
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 186
+          700-7200-0257:
+            default:
+              default:
+                icon: poi--generic-point_business-services-areas
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 92
+          700-7200-0265:
+            default:
+              default:
+                icon: poi--generic-point_business-services-areas
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 93
+          700-7200-0266:
+            default:
+              default:
+                icon: poi--generic-point_business-services-areas
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 94
+          700-7300-0111:
+            default:
+              default:
+                icon: poi--police
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 112
+          700-7400-0137:
+            default:
+              default:
+                icon: poi--laundry
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 243
+          700-7400-0286:
+            default:
+              default:
+                icon: poi--generic-point_business-services-areas
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 202
+          700-7450-0114:
+            default:
+              default:
+                icon: poi--post
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 187
+          700-7460-0115:
+            default:
+              default:
+                icon: poi--tourist-information
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 130
+          700-7600-0000:
+            default:
+              default:
+                icon: poi--petrol-station
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 17
+          700-7600-0116:
+            default:
+              default:
+                icon: poi--petrol-station
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 18
+          700-7600-0322:
+            default:
+              default:
+                icon: poi--car-charging
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 201
+          700-7800-0118:
+            default:
+              default:
+                icon: poi--car-dealership
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 188
+          700-7800-0119:
+            default:
+              default:
+                icon: poi--car-dealership
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 189
+          700-7800-0120:
+            default:
+              default:
+                icon: poi--generic-point_business-services-areas
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 190
+          700-7850-0000:
+            default:
+              default:
+                icon: poi--car-repair
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 191
+          700-7850-0121:
+            default:
+              default:
+                icon: poi--car-wash
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 192
+          700-7850-0122:
+            default:
+              default:
+                icon: poi--car-repair
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 64
+          700-7850-0123:
+            default:
+              default:
+                icon: poi--car-repair
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 193
+          700-7851-0117:
+            default:
+              default:
+                icon: poi--car-rental
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 194
+          700-7851-0127:
+            default:
+              default:
+                icon: poi--car-rental
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 195
+          800-8000-0000:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 141
+          800-8000-0159:
+            default:
+              default:
+                icon: poi--hospital
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 23
+          800-8000-0325:
+            default:
+              default:
+                icon: poi--first-aid
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 65
+          800-8100-0000:
+            default:
+              default:
+                icon: poi--facilities
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 68
+          800-8100-0163:
+            default:
+              default:
+                icon: poi--facilities
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 43
+          800-8100-0164:
+            default:
+              default:
+                icon: poi--facilities
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 116
+          800-8100-0165:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 117
+          800-8100-0168:
+            default:
+              default:
+                icon: poi--facilities
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 44
+          800-8100-0169:
+            default:
+              default:
+                icon: poi--facilities
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 118
+          800-8100-0170:
+            default:
+              default:
+                icon: poi--facilities
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 115
+          800-8100-0171:
+            default:
+              default:
+                icon: poi--facilities
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 113
+          800-8100-0172:
+            default:
+              default:
+                icon: poi--frontier-crossing
+                min_zoom: 13
+                size:
+                  - 20
+                  - 26
+                priority: 3
+          800-8200-0000:
+            default:
+              default:
+                icon: poi--education
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 196
+          800-8200-0173:
+            default:
+              default:
+                icon: poi--education
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 109
+          800-8200-0174:
+            default:
+              default:
+                icon: poi--education
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 197
+          800-8200-0295:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 205
+          800-8200-0360:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 206
+          800-8250-0000:
+            default:
+              default:
+                icon: poi--education
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 198
+          800-8250-0287:
+            default:
+              default:
+                icon: poi--education
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 199
+          800-8250-0288:
+            default:
+              default:
+                icon: poi--education
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 200
+          800-8300-0000:
+            default:
+              default:
+                icon: poi--library
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 110
+          800-8300-0175:
+            default:
+              default:
+                icon: poi--library
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 111
+          800-8400-0000:
+            default:
+              default:
+                icon: poi--facilities
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 69
+          800-8400-0176:
+            default:
+              default:
+                icon: poi--exhibition-center
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 21
+          800-8500-0000:
+            default:
+              default:
+                icon: poi--parking
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 208
+          800-8500-0177:
+            default:
+              default:
+                icon: poi--parking-garage
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 207
+          800-8500-0178:
+            default:
+              default:
+                icon: poi--parking
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 209
+          800-8500-0179:
+            default:
+              default:
+                icon: poi--park-and-ride
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 210
+          800-8500-0315:
+            default:
+              default:
+                icon: poi--parking
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 211
+          800-8600-0000:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 212
+          800-8600-0180:
+            default:
+              default:
+                icon: poi--stadium
+                min_zoom: 16
+                size:
+                  - 20
+                  - 26
+                priority: 62
+          800-8600-0181:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 213
+          800-8600-0182:
+            default:
+              default:
+                icon: poi--swimming
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 214
+          800-8600-0183:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 215
+          800-8600-0184:
+            default:
+              default:
+                icon: poi--bowling
+                min_zoom: 17
+                size:
+                  - 20
+                  - 26
+                priority: 114
+          800-8600-0185:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 216
+          800-8600-0186:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 217
+          800-8600-0187:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 218
+          800-8600-0188:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 219
+          800-8600-0189:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 220
+          800-8600-0190:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 221
+          800-8600-0191:
+            default:
+              default:
+                icon: poi--fitness
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 222
+          800-8600-0192:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 223
+          800-8600-0193:
+            default:
+              default:
+                icon: poi--golf-course
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 29
+          800-8600-0194:
+            default:
+              default:
+                icon: poi--golf-course
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 231
+          800-8600-0195:
+            default:
+              default:
+                icon: poi--stadium
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 224
+          800-8600-0196:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 225
+          800-8600-0197:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 226
+          800-8600-0199:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 227
+          800-8600-0200:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 228
+          800-8600-0314:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 229
+          800-8600-0316:
+            default:
+              default:
+                icon: poi--generic-point_facilities
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 230
+          800-8700-0166:
+            default:
+              default:
+                icon: poi--cemetry
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 241
+          800-8700-0198:
+            default:
+              default:
+                icon: poi--public-toilet
+                min_zoom: 19
+                size:
+                  - 20
+                  - 26
+                priority: 240
+          900-9100-0216:
+            default:
+              default:
+                min_zoom: 14
+                priority: 0
+          900-9200-0219:
+            default:
+              default:
+                icon: poi--harbor
+                min_zoom: 15
+                size:
+                  - 20
+                  - 26
+                priority: 28
+          900-9200-0386:
+            default:
+              default:
+                icon: poi--generic-point_business-services-areas
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 203
+          900-9300-0221:
+            default:
+              default:
+                icon: poi--generic-point_business-services-areas
+                min_zoom: 18
+                size:
+                  - 20
+                  - 26
+                priority: 204
+        getIcons: |
+          /**
+           * To get icons for the given feature and the given section.
+           * @param {Object} properties Feature properties.
+           * @param {string} section Section in the extra_data.poi (default, IPC, etc.).
+           * @return {Array.<Object>} Icons that belong to the given feature.
+           */
+          function(properties, section) {
+            let icons = [];
+
+            const category = this[section][properties.pds_category];
+            const kindDetail = category && (category[properties.kind_detail] || category['default']);
+            if (kindDetail) {
+              for (let key in properties) {
+                if (key.includes('has_') || (key.includes('is_') && key !== 'is_multimodal')) {
+                  let icon;
+                  if (properties.is_multimodal) {
+                    icon = (kindDetail['is_multimodal'] && kindDetail['is_multimodal'][key]) || kindDetail.default;
+                  } else {
+                    icon = kindDetail[key] || kindDetail.default;
+                  }
+                  // icon can be undefined if "is_*" flag is in the data, but not in the
+                  // master-list, that's currently the case for the "is_train" flag:
+                  if (icon !== undefined) {
+                    icons.push(Object.assign({}, icon));
+                  }
+                }
+              }
+
+              // Fallback to kindDetail.default (if defined) in case the
+              // corresponding style for boolean flag is not defined.
+              // In this case we will have only one icon to render:
+              if (icons.length === 0 && kindDetail.default) {
+                icons.push(Object.assign({}, kindDetail.default));
+              }
+            }
+
+            return icons;
+          }
+        processIcons: |
+          /**
+           * This funciton does the following:
+           * - Sorts icons by their priorities.
+           * - Filters-out icons which are outside of the min_zoom range.
+           * - Filters-out icons with duplicated images as the same image
+           *   shouldn't be rendered twice within the same group.
+           * - Assigns the default size for each icon, if needed.
+           * - Calculates horizontal offset for each icon.
+           * - Assigns the priority of the most important icon to each icon.
+           *
+           * @param {Array.<Object>} icons Icons to process.
+           * @partam {number} zoom Current zoom level.
+           * @return {Array.<Object>} An array with modified icons.
+           */
+          function(icons, zoom) {
+            // PointOfInterest.General.IconSize
+            let defaultIconSize = zoom < 16 ? 23 : zoom < 18 ? 25 : 26;
+
+            icons.sort((icon1, icon2) => icon1.priority - icon2.priority);
+
+            // Zoom-related filtering is done here and not in the "filter" section of the style because:
+            // - We need an amount of currently visible icons in order to calculate icon offset below.
+            // - We need an amount of currently visible icons in order to calculate text offset during
+            //   the rendering of the multimodal stations.
+            // - We need an amount of currently visible icons because filters of the layers responsible
+            //   for the multimodal stations rendering rely on icons.length.
+            const visited = {};
+            icons = icons.filter((icon) => {
+              if (zoom >= icon.min_zoom) {
+                return visited[icon.icon] ? false : (visited[icon.icon] = true);
+              } else {
+                return false;
+              }
+            });
+
+            for (let i = 0; i < icons.length; i++) {
+              // Scale width according to height
+              let width = Math.round(icons[i].size ?
+                defaultIconSize / icons[i].size[1] * icons[i].size[0] :
+                defaultIconSize);
+              let height = defaultIconSize;
+              icons[i].size = [width, height];
+              let iconWidth = Array.isArray(icons[i].size) ? icons[i].size[0] : icons[i].size;
+              iconWidth = iconWidth + 1; // 1px buffer to avoid collision
+              const firstIconOffset = -((icons.length - 1) * iconWidth / 2);
+              icons[i].offset = [firstIconOffset + iconWidth * i, 0];
+
+              icons[i].priority = icons[0].priority;
+            }
+
+            return icons;
+          }
+    transform:
+      pois: |
+        function(data, extraData, tileInfo) {
+          if (data.pois) {
+            for (let i = 0; i < data.pois.features.length; i++) {
+              const feature = data.pois.features[i];
+              const icons = extraData.poi.getIcons(feature.properties, 'default');
+              feature.properties.icons = extraData.poi.processIcons(icons, tileInfo.coords.z + 1);
+            }
+          }
+          return data;
+        }
+textures:
+  pois:
+    url: ./icons/poi-2x.png
+    density: 2
+    sprites:
+      poi--airport:
+        - 4
+        - 4
+        - 40
+        - 52
+      poi--amusement-park:
+        - 52
+        - 4
+        - 40
+        - 52
+      poi--art-gallery:
+        - 100
+        - 4
+        - 40
+        - 52
+      poi--atm:
+        - 4
+        - 64
+        - 40
+        - 52
+      poi--attraction:
+        - 52
+        - 64
+        - 40
+        - 52
+      poi--bank:
+        - 100
+        - 64
+        - 40
+        - 52
+      poi--beach:
+        - 148
+        - 4
+        - 40
+        - 52
+      poi--bookstore:
+        - 148
+        - 64
+        - 40
+        - 52
+      poi--bowling:
+        - 4
+        - 124
+        - 40
+        - 52
+      poi--bus:
+        - 52
+        - 124
+        - 40
+        - 52
+      poi--cable-way:
+        - 100
+        - 124
+        - 40
+        - 52
+      poi--camping:
+        - 148
+        - 124
+        - 40
+        - 52
+      poi--car-charging:
+        - 196
+        - 4
+        - 40
+        - 52
+      poi--car-dealership:
+        - 196
+        - 64
+        - 40
+        - 52
+      poi--car-rental:
+        - 196
+        - 124
+        - 40
+        - 52
+      poi--car-repair:
+        - 4
+        - 184
+        - 40
+        - 52
+      poi--car-wash:
+        - 52
+        - 184
+        - 40
+        - 52
+      poi--casino:
+        - 100
+        - 184
+        - 40
+        - 52
+      poi--cemetry:
+        - 148
+        - 184
+        - 40
+        - 52
+      poi--cinema:
+        - 196
+        - 184
+        - 40
+        - 52
+      poi--cocktail:
+        - 244
+        - 4
+        - 40
+        - 52
+      poi--coffee:
+        - 244
+        - 64
+        - 40
+        - 52
+      poi--education:
+        - 244
+        - 124
+        - 40
+        - 52
+      poi--exhibition-center:
+        - 244
+        - 184
+        - 40
+        - 52
+      poi--facilities:
+        - 292
+        - 4
+        - 40
+        - 52
+      poi--fast-food:
+        - 292
+        - 64
+        - 40
+        - 52
+      poi--ferry:
+        - 292
+        - 124
+        - 40
+        - 52
+      poi--first-aid:
+        - 292
+        - 184
+        - 40
+        - 52
+      poi--fitness:
+        - 4
+        - 244
+        - 40
+        - 52
+      poi--frontier-crossing:
+        - 52
+        - 244
+        - 40
+        - 52
+      poi--game-arcade:
+        - 100
+        - 244
+        - 40
+        - 52
+      poi--generic-point_business-services-areas:
+        - 148
+        - 244
+        - 40
+        - 52
+      poi--generic-point_entertainment:
+        - 196
+        - 244
+        - 40
+        - 52
+      poi--generic-point_facilities:
+        - 244
+        - 244
+        - 40
+        - 52
+      poi--generic-point_leisure-outdoor:
+        - 292
+        - 244
+        - 40
+        - 52
+      poi--generic-point_shopping:
+        - 340
+        - 4
+        - 40
+        - 52
+      poi--generic-point_sights-museum:
+        - 340
+        - 64
+        - 40
+        - 52
+      poi--golf-course:
+        - 340
+        - 124
+        - 40
+        - 52
+      poi--harbor:
+        - 340
+        - 184
+        - 40
+        - 52
+      poi--hospital:
+        - 340
+        - 244
+        - 40
+        - 52
+      poi--hotel:
+        - 4
+        - 304
+        - 40
+        - 52
+      poi--inclined:
+        - 52
+        - 304
+        - 40
+        - 52
+      poi--karaoke:
+        - 100
+        - 304
+        - 40
+        - 52
+      poi--laundry:
+        - 148
+        - 304
+        - 40
+        - 52
+      poi--library:
+        - 196
+        - 304
+        - 40
+        - 52
+      poi--metro:
+        - 244
+        - 304
+        - 40
+        - 52
+      poi--monorail:
+        - 292
+        - 304
+        - 40
+        - 52
+      poi--mountain:
+        - 340
+        - 424
+        - 40
+        - 40
+      poi--mountain-pass:
+        - 340
+        - 304
+        - 40
+        - 52
+      poi--nature:
+        - 388
+        - 4
+        - 40
+        - 52
+      poi--nature-overlook:
+        - 388
+        - 64
+        - 40
+        - 52
+      poi--night-club:
+        - 388
+        - 124
+        - 40
+        - 52
+      poi--park-and-ride:
+        - 388
+        - 184
+        - 40
+        - 52
+      poi--parking:
+        - 388
+        - 244
+        - 40
+        - 52
+      poi--parking-garage:
+        - 388
+        - 304
+        - 40
+        - 52
+      poi--petrol-station:
+        - 4
+        - 364
+        - 40
+        - 52
+      poi--pharmacy:
+        - 52
+        - 364
+        - 40
+        - 52
+      poi--picnic-area:
+        - 100
+        - 364
+        - 40
+        - 52
+      poi--police:
+        - 148
+        - 364
+        - 40
+        - 52
+      poi--pool:
+        - 196
+        - 364
+        - 40
+        - 52
+      poi--post:
+        - 244
+        - 364
+        - 40
+        - 52
+      poi--pub:
+        - 292
+        - 364
+        - 40
+        - 52
+      poi--public-toilet:
+        - 340
+        - 364
+        - 40
+        - 52
+      poi--rail-light:
+        - 388
+        - 364
+        - 40
+        - 52
+      poi--rail-regional:
+        - 436
+        - 4
+        - 40
+        - 52
+      poi--religious-place:
+        - 436
+        - 64
+        - 40
+        - 52
+      poi--restaurant:
+        - 436
+        - 124
+        - 40
+        - 52
+      poi--shopping:
+        - 436
+        - 184
+        - 40
+        - 52
+      poi--ski-run:
+        - 436
+        - 244
+        - 40
+        - 52
+      poi--stadium:
+        - 436
+        - 304
+        - 40
+        - 52
+      poi--swimming:
+        - 436
+        - 364
+        - 40
+        - 52
+      poi--taxi:
+        - 4
+        - 424
+        - 40
+        - 52
+      poi--theater:
+        - 52
+        - 424
+        - 40
+        - 52
+      poi--toll-booth:
+        - 100
+        - 424
+        - 40
+        - 52
+      poi--tourist-information:
+        - 148
+        - 424
+        - 40
+        - 52
+      poi--train:
+        - 196
+        - 424
+        - 40
+        - 52
+      poi--travel-agent-ticketing:
+        - 244
+        - 424
+        - 40
+        - 52
+      poi--zoo:
+        - 292
+        - 424
+        - 40
+        - 52
+styles:
+  pois:
+    base: points
+    blend_order: 1
+    draw:
+      texture: pois
+layers:
+  pois:
+    data:
+      source: omv
+      layer: pois
+    default:
+      filter: |
+        function() {
+          return feature.icons.length;
+        }
+      draw:
+        pois:
+          visible: global.poi.default.visible
+          priority: |
+            function() {
+              const basePriority = global.label.priorities['poi-labels'] + feature.icons[0].priority;
+              return global.poi.computePriority(basePriority, feature);
+            }
+          sprite: |
+            function() {
+              return feature.icons[0].icon;
+            }
+          size: |
+            function() {
+              return feature.icons[0].size;
+            }
+          anchor: top
+          text:
+            anchor: top
+            offset:
+              - 0
+              - 3px
+            text_source: global.ux_language_text_source
+            font:
+              family: global.text_font_family
+              fill: 'rgb(100, 100, 100)'
+              size:
+                - - 5
+                  - 8px
+                - - 8
+                  - 9px
+                - - 12
+                  - 9px
+                - - 13
+                  - 10px
+                - - 15
+                  - 10px
+                - - 16
+                  - 11px
+              stroke:
+                color: 'rgba(240, 246, 247, 0.59)'
+                width: 1px
+      public_transport:
+        filter:
+          pds_category:
+            - 400-4000-4581
+            - 400-4000-4582
+            - 400-4100-0038
+            - 400-4100-0339
+            - 400-4100-0340
+            - 400-4100-0342
+            - 400-4100-0037
+            - 400-4100-0337
+            - 400-4100-0035
+            - 400-4100-0047
+            - 400-4100-0039
+            - 400-4100-0044
+        draw:
+          pois:
+            anchor: center
+      mountain:
+        filter:
+          kind:
+            - peak
+            - volcano
+        draw:
+          pois:
+            anchor: center
+            size: 10px
+            text:
+              priority: |
+                function() {
+                  const basePriority = global.label.priorities['mountain-peak-labels'];
+                  return global.poi.computePriority(basePriority, feature);
+                }
+              text_source: |
+                function() {
+                  return ((global.ux_language && feature['name:' + global.ux_language]) ||
+                    (global.ux_language_fallback && feature['name:' + global.ux_language_fallback]) ||
+                    feature['name']) + (feature.elevation && ' (' + feature.elevation + 'm)' || '');
+                }
+              text_wrap: 1
+              max_lines: 5
+              anchor: top
+              font:
+                fill: 'rgb(113, 101, 97)'
+                stroke:
+                  width: 1px
+                  color: 'rgba(250, 254, 255, .47)'
+                size: 10px
+      only_label:
+        filter: |
+          function() {
+            return !feature.icons[0].icon;
+          }
+        draw:
+          text-blend-order:
+            visible: global.poi.default.visible
+            priority: |
+              function() {
+                const basePriority = global.label.priorities['poi-labels'] + feature.icons[0].priority;
+                return global.poi.computePriority(basePriority, feature);
+              }
+            anchor: center
+            text_source: global.ux_language_text_source
+            font:
+              family: global.text_font_family
+              fill: 'rgb(100, 100, 100)'
+              size:
+                - - 5
+                  - 8px
+                - - 8
+                  - 9px
+                - - 12
+                  - 9px
+                - - 13
+                  - 10px
+                - - 15
+                  - 10px
+                - - 16
+                  - 11px
+              stroke:
+                color: 'rgba(240, 246, 247, 0.59)'
+                width: 1px
+        neighborhood:
+          filter:
+            pds_category: 900-9100-0216
+          draw:
+            text-blend-order:
+              priority: |
+                function() {
+                  const basePriority = global.label.priorities['city-center-neighbourhood'] + feature.icons[0].priority;
+                  return global.poi.computePriority(basePriority, feature);
+                }

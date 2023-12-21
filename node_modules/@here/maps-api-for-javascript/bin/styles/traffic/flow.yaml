@@ -1,0 +1,141 @@
+global:
+  ###########################################  Override the OMV road colors  ###########################################
+  highway_fill: [[0, 'rgb(255,255,255)']]
+  highway_tunnel_fill: rgb(255,255,255)
+  highway_tunnel_center_line: rgb(255,255,255)
+  highway_outline: rgb(211,211,211)
+  highway_centerline_fill: [[0, 'rgb(255,255,255)']]
+  major_road_fill: [[0, 'rgb(255,255,255)']]
+  major_road_tunnel_fill: rgb(255,255,255)
+  major_road_outline: [[0, 'rgb(211,211,211)']]
+  major_road_secondary_fill: [[0, 'rgb(255,255,255)']]
+  major_road_secondary_tunnel_fill: rgb(255,255,255)
+  major_road_secondary_outline: rgb(211,211,211)
+  major_road_tertiary_fill: [[0, 'rgb(255,255,255)']]
+  major_road_tertiary_tunnel_fill: rgb(255,255,255)
+  major_road_tertiary_outline: rgb(211,211,211)
+  minor_road_residential_fill: [[0, 'rgb(255,255,255)']]
+  minor_road_residential_tunnel_fill: rgb(255,255,255)
+  minor_road_residential_outline: rgb(211,211,211)
+  minor_road_service_fill: [[0, 'rgb(255,255,255)']]
+  minor_road_service_tunnel_fill: rgb(255,255,255)
+  minor_road_service_outline: rgb(211,211,211)
+  minor_road_unpaved_fill: rgb(255,255,255)
+  bridge_outline: rgb(211,211,211)
+
+  #################################################  Traffic Flow style ################################################
+  JF_colors:
+    green: rgb(86, 177, 103)
+    yellow: rgb(254, 200, 2)
+    red: rgb(231, 31, 40)
+    black: rgb(0, 0, 0)
+  flow_width:
+    # FC{1,2} have the same width for now - later on we need to consolidate this styling
+    FC1: [[8, '2px'], [10, '2px'], [11, '2px'], [12, '2px'], [13, '2px'], [14, '4px'], [15, '4px'], [16, '5px'], [17, '3px'], [18, '8px'], [19, '8px'], [20, '14px']]
+    FC2: [[8, '2px'], [10, '2px'], [11, '2px'], [12, '2px'], [13, '2px'], [14, '4px'], [15, '4px'], [16, '5px'], [17, '3px'], [18, '8px'], [19, '8px'], [20, '14px']]
+    # FC{3,4,5} have the same width for now
+    FC3: [[8, '2px'], [10, '2px'], [11, '2px'], [12, '2px'], [13, '2px'], [14, '2px'], [15, '2px'], [16, '2px'], [17, '2px'], [18, '4px'], [19, '4px'], [20, '14px']]
+    FC4: [[8, '2px'], [10, '2px'], [11, '2px'], [12, '2px'], [13, '2px'], [14, '2px'], [15, '2px'], [16, '2px'], [17, '2px'], [18, '4px'], [19, '4px'], [20, '14px']]
+    FC5: [[8, '2px'], [10, '2px'], [11, '2px'], [12, '2px'], [13, '2px'], [14, '2px'], [15, '2px'], [16, '2px'], [17, '2px'], [18, '4px'], [19, '4px'], [20, '14px']]
+sources:
+  traffic_flow:
+    type: GeoJSONTileSource
+layers:
+  traffic_flow:
+    data:
+      source: 'traffic_flow'
+    draw:
+      lines:
+        interactive: true
+        join: round
+        cap: round
+        # No feature order is provided in the data.
+        # Sort according to the Jam Factor (heavy traffic over free flow) to avoid z-fighting on overlapping flow lines
+        order: 'function() {return feature.JF}'
+        color: 'function() {
+          var jamFactor = feature.JF, colors = global.JF_colors;
+          if (jamFactor >= 10 && feature.SP === -1) {return colors.black}
+          if (jamFactor >= 8) {return colors.red}
+          if (jamFactor >= 4) {return colors.yellow}
+          return colors.green;
+        }'
+    FC1:
+      filter:
+        $zoom:
+          min: 8
+        FC: 1
+      draw:
+        lines:
+          offset: [
+            [9, '2px'],
+            [12, '2px'],
+            [13, '4px'],
+            [15, '6px'],
+            [16, '8px'],
+            [17, '7px'],
+            [18, '17px'],
+            [20, '33px'],
+            [22, '36px']
+          ]
+          offset_reverse: function() {return feature.LHT}
+          width: global.flow_width.FC1
+    FC2:
+      filter:
+        "$zoom":
+          min: 11
+        FC: 2
+      draw:
+        lines:
+          offset: [
+            [9, '2px'],
+            [12, '2px'],
+            [13, '4px'],
+            [15, '6px'],
+            [16, '8px'],
+            [17, '7px'],
+            [18, '17px'],
+            [20, '33px'],
+            [22, '36px']
+          ]
+          offset_reverse: function() {return feature.LHT}
+          width: global.flow_width.FC2
+    FC3:
+      filter:
+        "$zoom":
+          min: 12
+        FC: 3
+      draw:
+        lines:
+          offset: [
+            [9, '2px'],
+            [12, '2px'],
+            [13, '2px'],
+            [15, '4px'],
+            [16, '7px'],
+            [17, '6px'],
+            [18, '17px'],
+            [22, '34px']
+          ]
+          offset_reverse: function() {return feature.LHT}
+          width: global.flow_width.FC3
+    FC4_5:
+      filter:
+        "$zoom":
+          min: 14
+        FC:
+          min: 4
+          max: 6
+      draw:
+        lines:
+          offset: [
+            [9, '2px'],
+            [12, '2px'],
+            [13, '2px'],
+            [15, '4px'],
+            [16, '7px'],
+            [17, '6px'],
+            [18, '17px'],
+            [22, '34px']
+          ]
+          offset_reverse: function() {return feature.LHT}
+          width: global.flow_width.FC4

@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: gray;
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  
+}
+
+.input {
+  padding: 15px;
+  width: 80%;
+  margin: auto;
+  border: 1px solid lightblue;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.weatherDiv {
+  background-color: lightblue;
+  min-width: 350px;
+  min-height: 100px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  position: relative;
+  
+}
+
+.city {
+  position: absolute;
+  font-size: 25px;
+  font-weight: bold;
+  left: 10px;
+  display: flex;
+  top: 30px;
+}
+
+.city.expandedCity {
+  font-size: 35px; /* Adjust the font size as needed */
+  display: flex;
+  left: 50%; /* Center the text horizontally */
+  transform: translateX(-50%); /* Adjust the horizontal position */
+  text-align: center;
+}
+
+.temperature {
+  font-size: 60px;
+  position: absolute;
+  right: 10px;
+  font-weight: bold;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.temperature.expandedTemp {
+  font-size: 60px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  top: 55px;
+}
+
+
+.test {
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  padding: 0;
+  left: 10px;
+  width: 100%;
+  color: black;
+  text-transform: capitalize;
+}
+
+.test.expandedTest {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  top: 100px;
+  font-size: 15px;
+}
+
+.weatherContainer {
+  margin-top: 20px; /* Adjust the margin-top value to move the weatherIcon down */
+}
+
+.conditions {
+  display: inline-block;
+}
+
+.weatherIcon {
+  width: 60px;
+  height: 60px;
+  vertical-align: middle; /* Aligns the image vertically with text */
+   /* Adjust the margin-top value to move the weatherIcon down */
+  
+  
+}
+
+.delete {
+  width: 50px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+}
+
+.expandedDiv {
+  width: 1000px;
+  height: 500px;
+  display: flex;
+  position: relative;
+}
+
+
+
+
+.testp {
+  width: 400px;
+}
+
+.gridWrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  width: 85%;
+  justify-content: center;
+  margin: 0 auto;
+  grid-gap: 10px; 
+}
+
+.map-container {
+  border-radius: 10px;
+  overflow: hidden; /* Ensure the border-radius is applied */
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: black;
+}
+
+.forecast {
+  grid-column: span 6; 
+  
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px; /* Adjust the gap between forecastDiv elements */
+  height: 100px;
+}
+
+.forecastDiv {
+  width: 100%; 
+  height: 100px;
+  background-color: bisque;
+  border-radius: 10px;
+}
+
+.wind {
+  grid-column: span 2;
+  background-color: grey;
+  height: 100px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.sunrise {
+  
+  background-color: brown;
+  border-radius: 10px;
+}
+
+.sunset {
+  background-color: palegoldenrod;
+  border-radius: 10px;
+}
+
+.humidity {
+  background-color: blueviolet;
+  border-radius: 10px;
+}
+
+.pressure {
+  background-color: red;
+  border-radius: 10px;
+}
+
+.airQuality {
+  grid-column: span 2;
+  background-color: blue;
+  border-radius: 10px;
+}
+

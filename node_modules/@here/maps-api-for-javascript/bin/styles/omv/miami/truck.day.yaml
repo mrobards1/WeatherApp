@@ -1,0 +1,446 @@
+import: normal.day.yaml
+
+global:
+  truck_restriction:
+    line_color: rgb(181,0,25)
+    text_color: rgb(87,25,55)
+    highway_width: [[0, 2px], [11, 3px], [13, 4px], [15, 6px],  [16, 8px], [17, 9px],  [18, 15px], [19, 18px]]
+    highway_link_trunk_width: [[0, 2px], [11, 2.5px], [13, 3px], [15, 6px],  [16, 8px],  [17, 8.5px],  [18, 15px], [19, 18px]]
+    major_road_width: [[10, 2px], [13, 3px], [16, 6px], [17, 9px], [18, 13px], [19, 16px]]
+    major_road_secondary_width: [[10, 2px], [13, 2.5px], [14, 3.5px], [16, 5px], [17, 8px], [18, 10px], [19, 14px]]
+    major_road_tertiary_width: [[11 , 1px], [12, 2px], [14, 2px], [15, 3px], [16, 4px], [17, 6px], [18, 8px], [19, 12px]]
+    minor_road_width: [[14 , 1px], [16, 2px], [17, 3px], [18, 5px], [19, 7px]]
+    tunnel_order_half_more: function() {return global.tunnel_order + .5}
+    us_or_canada_network: |
+      function(){
+        return feature.network.indexOf('US:') == 0 || feature.network == 'US' ||
+          feature.network.indexOf('CA:') == 0 || feature.network == 'CA';
+      }
+    getTimedSuffix: |
+      function(feature, name){
+        return feature.hgv_time_restrictions ? name + '_timed' : name;
+      }
+    # ATTENTION! This method must be always kept in sync with the textures.truck-attributes.sprites list!
+    getTimedSuffixWithFallback: |
+      function(global, feature, name, defaultName){
+        return (
+            /^truck-attributes--(default|hazmat|hazmat_permit_required|hazmat_water|height|length|speed_limit|trailers|weight|width|wpa)$/.test(name)
+            ||
+            /^us--(general_truck_restriction|hazmat|hazmat_corrosive|hazmat_explosives|hazmat_explosives_and_flammable|hazmat_flammable|hazmat_flammable_solid_combustible|hazmat_gas|hazmat_harmful_for_water|hazmat_organic|hazmat_other|hazmat_permit_required|hazmat_poison|hazmat_poison_inhalation_hazard|hazmat_radioactive|hazmat_tunnel_category|height|kpra|length|trailers|weight|width|wpa)$/.test(name)
+        ) ? global.truck_restriction.getTimedSuffix(feature, name) : global.truck_restriction.getTimedSuffix(feature, defaultName);
+      }
+textures:
+  truck-attributes:
+    url: ../icons/truck-2x.png
+    # filtering: mipmap
+    density: 2
+    # ATTENTION! Every kind of sprite needs also a variant with a _timed" suffix, used for "time restricted" signs!
+    sprites:
+      truck-attributes--default: [130, 2, 56, 56]
+      truck-attributes--default_timed: [130, 62, 56, 56]
+      truck-attributes--hazmat: [2, 130, 56, 56]
+      truck-attributes--hazmat_permit_required: [62, 130, 56, 56]
+      truck-attributes--hazmat_permit_required_timed: [122, 130, 56, 56]
+      truck-attributes--hazmat_timed: [190, 2, 56, 56]
+      truck-attributes--hazmat_water: [190, 62, 56, 56]
+      truck-attributes--hazmat_water_timed: [190, 122, 56, 56]
+      truck-attributes--height: [2, 190, 56, 56]
+      truck-attributes--height_timed: [62, 190, 56, 56]
+      truck-attributes--length: [122, 190, 56, 56]
+      truck-attributes--length_timed: [182, 190, 56, 56]
+      truck-attributes--speed_limit: [250, 2, 56, 56]
+      truck-attributes--speed_limit_timed: [250, 62, 56, 56]
+      truck-attributes--trailers: [250, 122, 56, 56]
+      truck-attributes--trailers_timed: [250, 182, 56, 56]
+      us--general_truck_restriction: [2, 250, 56, 56]
+      us--general_truck_restriction_timed: [62, 250, 56, 56]
+      us--hazmat: [122, 250, 56, 56]
+      us--hazmat_corrosive: [182, 250, 56, 56]
+      us--hazmat_corrosive_timed: [242, 250, 56, 56]
+      us--hazmat_explosives: [310, 2, 56, 56]
+      us--hazmat_explosives_and_flammable: [310, 62, 56, 56]
+      us--hazmat_explosives_and_flammable_timed: [310, 122, 56, 56]
+      us--hazmat_explosives_timed: [310, 182, 56, 56]
+      us--hazmat_flammable: [310, 242, 56, 56]
+      us--hazmat_flammable_solid_combustible: [2, 310, 56, 56]
+      us--hazmat_flammable_solid_combustible_timed: [62, 310, 56, 56]
+      us--hazmat_flammable_timed: [122, 310, 56, 56]
+      us--hazmat_gas: [182, 310, 56, 56]
+      us--hazmat_gas_timed: [242, 310, 56, 56]
+      us--hazmat_harmful_for_water: [302, 310, 56, 56]
+      us--hazmat_harmful_for_water_timed: [370, 2, 56, 56]
+      us--hazmat_organic: [370, 62, 56, 56]
+      us--hazmat_organic_timed: [370, 122, 56, 56]
+      us--hazmat_other: [370, 182, 56, 56]
+      us--hazmat_other_timed: [370, 242, 56, 56]
+      us--hazmat_permit_required: [370, 302, 56, 56]
+      us--hazmat_permit_required_timed: [2, 370, 56, 56]
+      us--hazmat_poison: [62, 370, 56, 56]
+      us--hazmat_poison_inhalation_hazard: [122, 370, 56, 56]
+      us--hazmat_poison_inhalation_hazard_timed: [182, 370, 56, 56]
+      us--hazmat_poison_timed: [242, 370, 56, 56]
+      us--hazmat_radioactive: [302, 370, 56, 56]
+      us--hazmat_radioactive_timed: [362, 370, 56, 56]
+      us--hazmat_timed: [430, 2, 56, 56]
+      us--hazmat_tunnel_category: [430, 62, 56, 56]
+      us--hazmat_tunnel_category_timed: [430, 122, 56, 56]
+      us--height: [430, 182, 56, 56]
+      us--height_timed: [430, 242, 56, 56]
+      us--kpra: [430, 302, 56, 56]
+      us--kpra_timed: [430, 362, 56, 56]
+      us--length: [2, 2, 60, 60]
+      us--length_timed: [66, 2, 60, 60]
+      us--trailers: [2, 430, 56, 56]
+      us--trailers_timed: [62, 430, 56, 56]
+      us--weight: [122, 430, 56, 56]
+      us--weight_timed: [182, 430, 56, 56]
+      us--width: [242, 430, 56, 56]
+      us--width_timed: [302, 430, 56, 56]
+      us--wpa: [2, 66, 60, 60]
+      us--wpa_timed: [66, 66, 60, 60]
+      truck-attributes--weight: [362, 430, 56, 56]
+      truck-attributes--weight_timed: [422, 430, 56, 56]
+      truck-attributes--width: [490, 2, 56, 56]
+      truck-attributes--width_timed: [490, 62, 56, 56]
+      truck-attributes--wpa: [490, 122, 56, 56]
+      truck-attributes--wpa_timed: [490, 182, 56, 56]
+styles:
+  truck-lines:
+    base: lines
+    blend: opaque
+  truck-attributes:
+    base: points
+    texture: truck-attributes
+    draw:
+      size: |
+            function() {
+              if (feature.hgv_restriction_shield_text && feature.hgv_restriction_shield_text.length > 3) {
+                return 36;
+              } else { return 26;}
+            }
+      texture: truck-attributes
+      placement: midpoint
+      placement_min_length_ratio: 0
+      sprite: |
+        function() {return global.truck_restriction.getTimedSuffixWithFallback(
+          global, feature, 'truck-attributes--' + feature.hgv_restriction, 'truck-attributes--default'
+        )}
+      text:
+        anchor: center
+        text_source: hgv_restriction_shield_text
+        font:
+          family: global.text_font_family
+          weight: 450
+          size: [[15, 8px], [16, 9px], [19, 10px]]
+          fill: global.truck_restriction.text_color
+layers:
+  landuse:
+    label:
+      industrial:
+        draw:
+          icon_library:
+            priority: global.label.priorities.small-land-use-labels
+            sprite: area-icon-day--industrial_complex
+            text:
+              priority: global.label.priorities.small-land-use-labels
+              anchor: [top, bottom, left, right]
+              text_wrap: 18
+              font:
+                fill: global.landuse_industrial_label_color
+                size: global.landuse_default_label_font_size
+                stroke:
+                  color: global.landuse_industrial_outline_color
+                  width: 2px
+
+  roads:
+    # Render center lines only if no truck restriction will be rendered
+    disable-center-line:
+      filter:
+        all:
+          - kind: highway
+          - any:
+            - hgv: true
+            - hgv_restriction: true
+      draw:
+        center-lines:
+          visible: false
+
+  truck-restriction:
+    data: {source: omv, layer: roads}
+
+    signs:
+      filter:
+        all:
+          - not: {hgv_restriction: false}
+          - not: {hgv_restriction: multiple}
+      draw:
+        truck-attributes:
+          priority: global.label.priorities.truck-labels
+      length:
+        filter:
+          all:
+            - not: global.truck_restriction.us_or_canada_network
+            - hgv_restriction: length
+        draw:
+          truck-attributes:
+            size: 150%
+            text:
+              text_source: function(){return feature.hgv_restriction_shield_text.split('m').join('\nm')}
+      width:
+        filter:
+          all:
+            - not: global.truck_restriction.us_or_canada_network
+            - hgv_restriction: width
+        draw:
+          truck-attributes:
+            size: 150%
+      weight:
+        filter:
+          all:
+            - not: global.truck_restriction.us_or_canada_network
+            - hgv_restriction: weight
+        draw:
+          truck-attributes:
+            size: 100%
+      trailers:
+        filter:
+          hgv_restriction: trailers
+        draw:
+          truck-attributes:
+            size: 100%
+            text:
+              visible: false
+      wpa:
+        filter:
+          hgv_restriction: wpa
+        draw:
+          truck-attributes:
+            size: 120%
+            text:
+              offset: [0px, -4px]
+        long_text:
+          filter: function(){return feature.hgv_restriction_shield_text.length > 6}
+          draw:
+            truck-attributes:
+              size: 100%
+              text:
+                anchor: top
+                offset: [0px, 2px]
+                text_wrap: 10
+                font:
+                  stroke:
+                    color: global.text_outline
+                    width: 2px
+      hazmat:
+        filter:
+          hgv_restriction: hazmat
+        draw:
+          truck-attributes:
+            buffer: 30px
+            size: 100%
+            text:
+              visible: false
+        water:
+          filter: function(){return feature.hgv_restriction_shield_text.indexOf('water') != -1}
+          draw:
+            truck-attributes:
+              sprite: function(){global.truck_restriction.getTimedSuffix(feature, 'truck-attributes--hazmat_water')}
+      other:
+        filter:
+          hgv_restriction: other
+        draw:
+          truck-attributes:
+            priority: |
+              function() {
+                return global.label.priorities['truck-labels'] + 1;
+              }
+            buffer: 40px
+      US_OR_CA:
+        filter: global.truck_restriction.us_or_canada_network
+        draw:
+          truck-attributes:
+            size: 120%
+            sprite: |
+              function() {return global.truck_restriction.getTimedSuffixWithFallback(
+                global, feature, 'us--' + feature.hgv_restriction, 'us--general_truck_restriction'
+              )}
+            text:
+              font:
+                fill: black
+        wpa:
+          filter:
+            hgv_restriction: wpa
+          long_text:
+            filter: function(){return feature.hgv_restriction_shield_text.length > 6}
+            draw:
+              truck-attributes:
+                text:
+                  font:
+                    stroke:
+                      color: rgb(253,240,0)
+        length:
+          filter:
+            hgv_restriction: length
+          draw:
+            truck-attributes:
+              size: 120%
+              text:
+                offset: 0
+        kpra:
+          filter:
+            hgv_restriction: kpra
+          draw:
+            truck-attributes:
+              text:
+                offset: [0, -2px]
+        hazmat:
+          filter:
+            hgv_restriction: hazmat
+          draw:
+            truck-attributes:
+              sprite: |
+                function(){return global.truck_restriction.getTimedSuffixWithFallback(
+                  global, feature, 'us--hazmat_' + feature.hgv_restriction_shield_text.toLowerCase(), 'us--hazmat'
+                )}
+              buffer: 10px
+              text: {visible: false}
+          flammable_solid_combustible:
+            filter:
+              hgv_restriction_shield_text: 'Flammable solid combustible'
+            draw:
+              truck-attributes:
+                sprite: |
+                  function(){return global.truck_restriction.getTimedSuffix(
+                    feature, 'us--hazmat_flammable_solid_combustible'
+                  )}
+          harmful_for_water:
+            filter:
+              hgv_restriction_shield_text: 'Goods harmful for water'
+            draw:
+              truck-attributes:
+                sprite: |
+                  function(){return global.truck_restriction.getTimedSuffix(feature, 'us--hazmat_harmful_for_water')}
+          hazmat_explosives_and_flammable:
+            filter:
+              hgv_restriction_shield_text: 'Explosives and flammable'
+            draw:
+              truck-attributes:
+                sprite: |
+                  function(){return global.truck_restriction.getTimedSuffix(
+                    feature, 'us--hazmat_explosives_and_flammable'
+                  )}
+          hazmat_poison_inhalation_hazard:
+            filter:
+              hgv_restriction_shield_text: 'Poisonous inhalation hazard'
+            draw:
+              truck-attributes:
+                sprite: |
+                  function(){return global.truck_restriction.getTimedSuffix(
+                    feature, 'us--hazmat_poison_inhalation_hazard'
+                  )}
+          tunnel_category:
+            filter: function() {return feature.hgv_restriction_shield_text.indexOf('Tunnel category') == 0;}
+            draw:
+              truck-attributes:
+                sprite: |
+                  function(){return global.truck_restriction.getTimedSuffix(feature, 'us--hazmat_tunnel_category')}
+                text:
+                  visible: true
+                  anchor: top
+                  offset: [0, 2px]
+
+    lines:
+      filter:
+        all:
+          - any:
+            - hgv: true
+            - hgv_restriction: true
+          - not: {kind: [path,ferry,rail]}
+      draw:
+        truck-lines:
+          width: 1px
+          color: global.truck_restriction.line_color
+          cap: round
+          join: round
+          order: global.feature_order_half_more
+      highway:
+        filter:
+          kind: highway
+        draw:
+          truck-lines:
+            order: global.feature_order_half_more
+            width: global.truck_restriction.highway_width
+        tunnel:
+          filter:
+            is_tunnel: true
+          draw:
+            truck-lines:
+              order: global.truck_restriction.tunnel_order_half_more
+        bridge:
+          filter:
+            is_bridge: true
+          draw:
+            truck-lines:
+              order: global.feature_order_half_more
+        link:
+          filter:
+            is_link: true
+          draw:
+            truck-lines:
+              width: global.truck_restriction.highway_link_trunk_width
+        trunk:
+          filter:
+            kind_detail: trunk
+          draw:
+            truck-lines:
+              width: global.truck_restriction.highway_link_trunk_width
+      major_road:
+        filter:
+          kind: major_road
+        draw:
+          truck-lines:
+            order: global.feature_order_half_more
+            width: global.truck_restriction.major_road_width
+        tunnel:
+          filter:
+            is_tunnel: true
+          draw:
+            truck-lines:
+              order: global.truck_restriction.tunnel_order_half_more
+        bridge:
+          filter:
+            is_bridge: true
+          draw:
+            truck-lines:
+              order: global.feature_order_half_more
+        secondary:
+          filter:
+            kind_detail: [secondary, secondary_link]
+          draw:
+            truck-lines:
+              width: global.truck_restriction.major_road_secondary_width
+        tertiary:
+          filter:
+            kind_detail: [tertiary, tertiary_link]
+          draw:
+            truck-lines:
+              width: global.truck_restriction.major_road_tertiary_width
+      minor_road:
+        filter:
+          kind: minor_road
+        draw:
+          truck-lines:
+            order: global.feature_order_half_more
+            width: global.truck_restriction.minor_road_width
+        tunnel:
+          filter:
+            is_tunnel: true
+          draw:
+            truck-lines:
+              order: global.truck_restriction.tunnel_order_half_more
+        bridge:
+          filter:
+            is_bridge: true
+          draw:
+            truck-lines:
+              order: global.feature_order_half_more

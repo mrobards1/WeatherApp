@@ -1,0 +1,455 @@
+global:
+  #####  override the OMV road colors  #####
+  highway_fill: 'rgb(255,255,255)'
+  highway_tunnel_fill: rgb(255,255,255)
+  highway_tunnel_center_line: rgb(255,255,255)
+  highway_outline: rgb(211,211,211)
+  highway_centerline_fill: 'rgb(255,255,255)'
+  major_road_fill: 'rgb(255,255,255)'
+  major_road_tunnel_fill: rgb(255,255,255)
+  major_road_outline: 'rgb(211,211,211)'
+  major_road_secondary_fill: 'rgb(255,255,255)'
+  major_road_secondary_tunnel_fill: rgb(255,255,255)
+  major_road_secondary_outline: rgb(211,211,211)
+  major_road_tertiary_fill: 'rgb(255,255,255)'
+  major_road_tertiary_tunnel_fill: rgb(255,255,255)
+  major_road_tertiary_outline: rgb(211,211,211)
+  minor_road_residential_fill: 'rgb(255,255,255)'
+  minor_road_residential_tunnel_fill: rgb(255,255,255)
+  minor_road_residential_outline: rgb(211,211,211)
+  minor_road_service_fill: 'rgb(255,255,255)'
+  minor_road_service_tunnel_fill: rgb(255,255,255)
+  minor_road_service_outline: rgb(211,211,211)
+  minor_road_unpaved_fill: rgb(255,255,255)
+  bridge_outline: rgb(211,211,211)
+
+  traffic:
+    outline:
+      width: '1px'
+    no_route_dash: [4, 3]
+    drives_on_left: 'function() { return feature.drives_on_left; }'
+    #####  flow and incident colors by kind  #####
+    no_route_blocking_second_color: '#f13764'
+    flow:
+      color: 'function() {
+        const byKind = {
+          "none": "#ffffff",
+          "free": "#84e8a6",
+          "minor": "#fcee81",
+          "queuing": "#ff7d90",
+          "slow": "#fcee81",
+          "stationary": "#ff7d90"
+        };
+        return byKind[feature.kind];
+      }'
+      outline:
+        color: 'function() {
+          const byKind = {
+            "none": "#ff7d90",
+            "free": "#4bb46c",
+            "minor": "#e58094",
+            "queuing": "#dd003f",
+            "slow": "#e58094",
+            "stationary": "#dd003f"
+          };
+          return byKind[feature.kind];
+        }'
+    incident:
+      color: 'function() {
+        if (feature.kind === "road_closure") {
+          return "#ffffff";
+        } else {
+          return "rgba(26, 26, 40, 0.45)";
+        }
+      }'
+      outline:
+        color: 'function() {
+          if (feature.kind === "road_closure") {
+            return "#ff7d90";
+          }
+        }'
+      min_zoom_filter: 'function() {
+        const byKind = {
+          "road_closure": 9,
+          "accident": 13,
+          "congestion": 12,
+          "construction": 11,
+          "disabled_vehicle": 13,
+          "mass_transit": 13,
+          "lane_restriction": 13,
+          "planned_event": 13,
+          "road_hazard": 13,
+          "weather": 13,
+          "other": 13
+        };
+        return $zoom >= byKind[feature.kind];
+      }'
+    #####  flow widths and offsets by road category  #####
+    category0:
+      width: [
+        [7, '0.6px'],
+        [8, '0.9px'],
+        [9, '0.9px'],
+        [10, '0.9px'],
+        [11, '1.55px'],
+        [12, '2.15px'],
+        [13, '2.45px'],
+        [14, '2.8px'],
+        [15, '2.8px'],
+        [16, '3.4px'],
+        [17, '3.7px'],
+        [18, '4.35px'],
+        [19, '5.25px'],
+        [20, '6.2px'],
+        [24, '61.95px']
+      ]
+      offset: [ # half of the road width
+        [6, '0.5px'],
+        [7, '1px'],
+        [8, '1.25px'],
+        [9, '1.75px'],
+        [11, '2px'],
+        [12, '2.5px'],
+        [13, '2.75px'],
+        [14, '3.5px'],
+        [15, '5px'],
+        [16, '6px'],
+        [17, '9px'],
+        [18, '17.5px'],
+        [19, '22.5px'],
+        [20, '35px']
+      ]
+    category1:
+      width: [
+        [10, '0.6px'],
+        [11, '0.9px'],
+        [12, '1.25px'],
+        [13, '1.85px'],
+        [14, '2.15px'],
+        [15, '2.45px'],
+        [16, '2.8px'],
+        [17, '3.1px'],
+        [18, '3.7px'],
+        [19, '4.65px'],
+        [20, '5.55px']
+      ]
+      highway_trunk:
+        offset: [
+          [5, '0.5px'],
+          [8, '0.5px'],
+          [9, '1px'],
+          [10, '1px'],
+          [12, '1.25px'],
+          [13, '1.5px'],
+          [14, '2.5px'],
+          [15, '3.5px'],
+          [16, '6px'],
+          [17, '7.5px'],
+          [18, '15px'],
+          [19, '18.5px'],
+          [20, '32px']
+        ]
+      major_road_primary:
+        offset: [
+          [8, '0.5px'],
+          [9, '1px'],
+          [10, '1.5px'],
+          [12, '1.75px'],
+          [13, '2px'],
+          [14, '3px'],
+          [15, '3.5px'],
+          [16, '5.5px'],
+          [17, '7.5px'],
+          [18, '17px'],
+          [19, '19px'],
+          [20, '31px']
+        ]
+    category2:
+      width: [
+        [13, '1.25px'],
+        [14, '1.55px'],
+        [15, '1.85px'],
+        [16, '2.15px'],
+        [17, '2.45px'],
+        [18, '3.1px'],
+        [19, '4px'],
+        [20, '4.65px']
+      ]
+      offset: [
+        [10, '0.5px'],
+        [12, '1px'],
+        [13, '1.75px'],
+        [14, '2.5px'],
+        [15, '3.5px'],
+        [16, '5.5px'],
+        [17, '6px'],
+        [18, '15px'],
+        [19, '17px'],
+        [20, '27px']
+      ]
+    category3:
+      width: [
+        [14, '1.55px'],
+        [15, '1.55px'],
+        [16, '1.85px'],
+        [17, '2.15px'],
+        [18, '2.45px'],
+        [19, '3.1px'],
+        [20, '3.7px']
+      ]
+      offset: [
+        [11, '0.75px'],
+        [12, '1px'],
+        [13, '1.25px'],
+        [14, '1.75px'],
+        [15, '2.5px'],
+        [16, '4.5px'],
+        [17, '4.5px'],
+        [18, '12.5px'],
+        [19, '14.5px'],
+        [20, '23px']
+      ]
+    category4:
+      width: [
+        [16, '1.55px'],
+        [17, '1.85px'],
+        [18, '2.15px'],
+        [19, '2.45px'],
+        [20, '3.1px']
+      ]
+      offset: [
+        [14, 1px],
+        [15, 1.5px],
+        [17, 3px],
+        [18, 9px],
+        [19, 12px],
+        [20, 23px]
+      ]
+sources:
+  traffic:
+    type: OMV
+textures:
+  incidents:
+    url: ./icons/day-2x.png
+    density: 2
+    sprites:
+      traffic_accident: [0, 0, 64, 68]
+      traffic_congestion: [65, 0, 64, 68]
+      traffic_construction: [130, 0, 64, 68]
+      traffic_disabled_vehicle: [0, 69, 64, 68]
+      traffic_lane_restriction: [65, 69, 64, 68]
+      traffic_mass_transit: [130, 69, 64, 68]
+      traffic_other: [195, 0, 64, 68]
+      traffic_planned_event: [195, 69, 64, 68]
+      traffic_road_closure: [0, 138, 64, 68]
+      traffic_road_hazard: [65, 138, 64, 68]
+      traffic_weather: [130, 138, 64, 68]
+styles:
+  translucent-lines:
+      base: lines
+      blend: translucent
+layers:
+  traffic_flow:
+    data:
+      source: traffic
+    draw:
+      lines:
+        interactive: true
+        join: round
+        cap: round
+        order: 1
+        color: global.traffic.flow.color
+        offset_reverse: global.traffic.drives_on_left
+        outline:
+          color: global.traffic.flow.outline.color
+          width: global.traffic.outline.width
+    blocking:
+      filter:
+        kind: none
+      draw:
+        lines:
+          order: 3
+          dash_background_color: global.traffic.no_route_blocking_second_color
+          dash: global.traffic.no_route_dash
+    category0:
+      filter:
+        all:
+          - road_kind: highway
+          - not: {road_kind_detail: trunk}
+          - { $zoom: { min: 7 } }
+      draw:
+        lines:
+          width: global.traffic.category0.width
+          offset: global.traffic.category0.offset
+    category1:
+      filter:
+        any:
+          - all:
+            - road_kind: highway
+            - road_kind_detail: trunk
+            - { $zoom: { min: 10 } }
+          - all:
+            - road_kind: major_road
+            - road_kind_detail: primary
+            - { $zoom: { min: 10 } }
+      draw:
+        lines:
+          width: global.traffic.category1.width
+      highway_trunk:
+        filter:
+          all:
+            - road_kind: highway
+            - road_kind_detail: trunk
+        draw:
+          lines:
+            offset: global.traffic.category1.highway_trunk.offset
+      major_road_primary:
+        filter:
+          all:
+            - road_kind: major_road
+            - road_kind_detail: primary
+        draw:
+          lines:
+            offset: global.traffic.category1.major_road_primary.offset
+    category2:
+      filter:
+        all:
+          - road_kind: major_road
+          - road_kind_detail: secondary
+          - { $zoom: { min: 13 } }
+      draw:
+        lines:
+          width: global.traffic.category2.width
+          offset: global.traffic.category2.offset
+    category3:
+      filter:
+        all:
+          - road_kind: major_road
+          - road_kind_detail: tertiary
+          - { $zoom: { min: 14 } }
+      draw:
+        lines:
+          width: global.traffic.category3.width
+          offset: global.traffic.category3.offset
+    category4:
+      filter:
+        all:
+          - road_kind: minor_road
+          - { $zoom: { min: 16 } }
+      draw:
+        lines:
+          width: global.traffic.category4.width
+          offset: global.traffic.category4.offset
+
+  traffic_incidents:
+    data:
+      source: traffic
+    filter: global.traffic.incident.min_zoom_filter
+    draw:
+      translucent-lines:
+        interactive: true
+        join: round
+        cap: round
+        order: 1
+        color: global.traffic.incident.color
+        offset_reverse: global.traffic.drives_on_left
+        outline:
+          color: global.traffic.incident.outline.color
+          width: global.traffic.outline.width
+    blocking:
+      filter:
+        kind: road_closure
+      draw:
+        translucent-lines:
+          dash_background_color: global.traffic.no_route_blocking_second_color
+          dash: global.traffic.no_route_dash
+    non-blocking:
+      filter:
+        not:
+          kind: road_closure
+      draw:
+        translucent-lines:
+          dash: global.traffic.no_route_dash
+    category0:
+      filter:
+        all:
+          - road_kind: highway
+          - not: {road_kind_detail: trunk}
+          - { $zoom: { min: 7 } }
+      draw:
+        translucent-lines:
+          width: global.traffic.category0.width
+          offset: global.traffic.category0.offset
+    category1:
+      filter:
+        any:
+          - all:
+            - road_kind: highway
+            - road_kind_detail: trunk
+            - { $zoom: { min: 10 } }
+          - all:
+            - road_kind: major_road
+            - road_kind_detail: primary
+            - { $zoom: { min: 10 } }
+        draw:
+          translucent-lines:
+            width: global.traffic.category1.width
+      highway_trunk:
+        filter:
+          all:
+            - road_kind: highway
+            - road_kind_detail: trunk
+        draw:
+          translucent-lines:
+            offset: global.traffic.category1.highway_trunk.offset
+      major_road_primary:
+        filter:
+          all:
+            - road_kind: major_road
+            - road_kind_detail: primary
+        draw:
+          translucent-lines:
+            offset: global.traffic.category1.major_road_primary.offset
+    category2:
+      filter:
+        all:
+          - road_kind: major_road
+          - road_kind_detail: secondary
+          - { $zoom: { min: 13 } }
+      draw:
+        translucent-lines:
+          width: global.traffic.category2.width
+          offset: global.traffic.category2.offset
+    category3:
+      filter:
+        all:
+          - road_kind: major_road
+          - road_kind_detail: tertiary
+          - { $zoom: { min: 14 } }
+      draw:
+        translucent-lines:
+          width: global.traffic.category3.width
+          offset: global.traffic.category3.offset
+    category4:
+      filter:
+        all:
+          - road_kind: minor_road
+          - { $zoom: { min: 16 } }
+      draw:
+        translucent-lines:
+          width: global.traffic.category4.width
+          offset: global.traffic.category4.offset
+
+  incident_icons:
+    data:
+      source: traffic
+    filter:
+      all:
+        - is_primary: false
+        - global.traffic.incident.min_zoom_filter
+    draw:
+      points:
+        priority: 144
+        interactive: true
+        texture: incidents
+        sprite: 'function() { return "traffic_" + feature.kind; }'

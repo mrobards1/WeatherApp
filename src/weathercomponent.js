@@ -12,6 +12,7 @@ const WeatherComponent = (props) => {
     // const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
     const iconBaseUrl = "https://openweathermap.org/img/wn/";
+    
 
     const handleDelete = () => {
         onDelete();
@@ -125,6 +126,7 @@ const WeatherComponent = (props) => {
                     <img className="weatherIcon" src={`${iconBaseUrl}${weathericon}@2x.png`} alt="Weather Icon" />
                 </p>
                 {isExpanded && (
+                    
                     <div className="gridWrapper">
                         <div className="forecast">
                             {forecastDataList.list && forecastDataList.list.slice(0, 7).map((item, index) => (
@@ -197,6 +199,8 @@ const WeatherComponent = (props) => {
 
 
                     </div>
+
+                    
                 )}
 
             </div>
@@ -205,18 +209,7 @@ const WeatherComponent = (props) => {
 
             {isExpanded && (
                 <div className="expandedDiv">
-                    <div className="map-container">
-                        {/* <GoogleMap
-                            className="map"
-                            mapContainerStyle={mapContainerStyle}
-                            zoom={9}
-                            center={center}
-                            options={{
-                                disableDefaultUI: true,
-                                zoomControl: false,
-                            }}
-                        /> */}
-                    </div>
+                    
                 </div>
 
 

@@ -7,12 +7,12 @@ import './App.css'
 
 
 const WeatherComponent = (props) => {
-    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelsLike, sunrise, sunset, airPollution, weathericon, lon, lat, forecastDataList, onDelete } = props;
+    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelslike, timezone, sunrise, sunset, airPollution, weathericon, lon, lat, forecastDataList, onDelete } = props;
 
     // const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
     const iconBaseUrl = "https://openweathermap.org/img/wn/";
-    
+
 
     const handleDelete = () => {
         onDelete();
@@ -40,6 +40,21 @@ const WeatherComponent = (props) => {
         const currentDayOfWeek = daysOfWeek[dayIndex];
         return currentDayOfWeek;
     }
+
+
+    const sunriseMill = sunrise * 1000;
+    const sunrisedate = new Date(sunriseMill);
+
+    const sunriseHours = sunrisedate.getHours();
+    const sunriseMinutes = sunrisedate.getMinutes();
+
+    const sunsetMill = sunset * 1000;
+    const sunsetdate = new Date(sunsetMill);
+
+    const sunsetHours = sunsetdate.getHours();
+    const sunsetMinutes = sunsetdate.getMinutes();
+
+
 
     const airQuality = (airPollution) => {
         let airQual = '';
@@ -69,7 +84,7 @@ const WeatherComponent = (props) => {
 
     const windDirection = (winddeg) => {
         let windDir = '';
-    
+
         if ((winddeg >= 350 && winddeg <= 360) || (winddeg >= 0 && winddeg <= 10)) {
             windDir = 'N';
         } else if (winddeg >= 20 && winddeg <= 30) {
@@ -103,7 +118,7 @@ const WeatherComponent = (props) => {
         } else if (winddeg >= 330 && winddeg <= 340) {
             windDir = 'N/NW';
         }
-    
+
         return windDir;
     };
 
@@ -115,9 +130,11 @@ const WeatherComponent = (props) => {
         return <div>Loading maps</div>;
     }
 
+
+
     return (
 
-        <div className="weatherDiv" onClick={() => setIsExpanded(!isExpanded)}>
+        <div className={`weatherDiv ${isExpanded ? 'expandedDiv' : ''}`}>
             <p className={`city ${isExpanded ? 'expandedCity' : ''}`}>{city}, {country}</p>
             <p className={`temperature ${isExpanded ? 'expandedTemp' : ''}`}>{temperature + '\u00B0'}</p>
             <div className={`test ${isExpanded ? 'expandedTest' : ''}`}>
@@ -126,7 +143,8 @@ const WeatherComponent = (props) => {
                     <img className="weatherIcon" src={`${iconBaseUrl}${weathericon}@2x.png`} alt="Weather Icon" />
                 </p>
                 {isExpanded && (
-                    
+
+
                     <div className="gridWrapper">
                         <div className="forecast">
                             {forecastDataList.list && forecastDataList.list.slice(0, 7).map((item, index) => (
@@ -138,14 +156,6 @@ const WeatherComponent = (props) => {
 
                                 </div>
                             ))}
-
-                        </div>
-
-                        <div className="wind">
-                            <p>Wind</p>
-                            <p>{windspeed} MPH</p>
-                            <p>{winddeg + '\u00B0'} {windDirection(winddeg)}</p>
-                            
 
                         </div>
 
@@ -162,14 +172,28 @@ const WeatherComponent = (props) => {
                             />
                         </div>
 
+                        <div className="wind">
+                            <p>Wind</p>
+                            <p>{windspeed} MPH</p>
+                            <p>{winddeg + '\u00B0'} {windDirection(winddeg)}</p>
+
+
+                        </div>
+
+
+
                         <div className="sunrise">
                             <p>Sunrise</p>
-                            <p>{sunrise}</p>
+                            {/* <p>{sunriseHours}:{sunriseMinutes} AM UTC</p> */}
+                            <p>{sunrisedate.toUTCString()}</p>
+                            
                         </div>
 
                         <div className="sunset">
                             <p>Sunset</p>
-                            <p>{sunset}</p>
+                            {/* <p>{sunsetHours}:{sunsetMinutes} PM UTC</p> */}
+                            <p>{sunsetdate.toUTCString()}</p>
+                            
 
                         </div>
 
@@ -193,29 +217,27 @@ const WeatherComponent = (props) => {
 
                         <div className="feelsLike">
                             <p> Feels Like</p>
-                            <p>{feelsLike}</p>
+                            <p>{Math.round(feelslike)}</p>
 
                         </div>
 
 
+
                     </div>
 
-                    
+
+
                 )}
 
             </div>
 
 
 
-            {isExpanded && (
-                <div className="expandedDiv">
-                    
-                </div>
 
-
-            )}
-
-            <button className="delete" onClick={onDelete}>-</button>
+            <button className="expandButton" onClick={() => setIsExpanded(!isExpanded)}>
+                {isExpanded ? 'Minimize' : 'Expand'}
+            </button>
+            <button className="delete" onClick={onDelete}>x</button>
         </div>
     );
 };

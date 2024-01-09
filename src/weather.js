@@ -74,6 +74,7 @@ function Weather() {
                       pressure={data.main.pressure}
                       humidity={data.main.humidity}
                       feelslike={data.main.feels_like}
+                      timezone={data.timezone}
                       sunrise={data.sys.sunrise}
                       sunset={data.sys.sunset}
                       airPollution={airPollution.list[0].main.aqi}

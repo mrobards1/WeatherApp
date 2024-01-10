@@ -215,7 +215,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 85%;
   grid-column: span 2;
 }
 
@@ -238,6 +237,7 @@
 .windDir {
   grid-column: span 1;
 }
+
 
 .arrow {
   display: inline-block;

@@ -14,6 +14,7 @@ function Weather() {
   const [city, setCity] = useState("");
   const [forecastData, setForecastData] = useState({});
   const [isDuplicate, setIsDuplicate] = useState(false);
+  const [isCityError, setIsCityError] = useState(false);
   const [hourlyForecast, setHourlyForecast] = useState({});
   const [airPollution, setAirPollution] = useState({});
   const [componentInstances, setComponentInstances] = useState([]);
@@ -29,42 +30,47 @@ function Weather() {
 
 
   const getWeather = (event) => {
-
     if (event.key === "Enter") {
-
       setIsDuplicate(false);
+      setIsCityError(false);
 
-      if (componentInstances.some(instance => instance.props.city.toLowerCase() === city.toLowerCase())) { /*checks if city has already been added */
+      const trimmedCity = city.trim().toLowerCase(); // Trim spaces and convert to lowercase
+
+      if (componentInstances.some((instance) => instance.props.city.toLowerCase() === trimmedCity)) {
         setIsDuplicate(true);
         console.log(`City "${city}" is already added.`);
         return;
       } else {
         setIsDuplicate(false);
       }
-
-
+  
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApi.key}&units=imperial`)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => {
+          if (!response.ok) {
+            // Check for errors and throw an error if the response is not successful
+            throw new Error(`City not found: ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
           setWeatherData(data);
           setCity("");
-
+  
           fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`)
-            .then(response => response.json())
-            .then(forecastData => {
+            .then((response) => response.json())
+            .then((forecastData) => {
               setForecastData(forecastData);
-
-              fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`)
-                .then(response => response.json())
-                .then(airPollution => {
+  
+              fetch(
+                `http://api.openweathermap.org/data/2.5/air_pollution?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`
+              )
+                .then((response) => response.json())
+                .then((airPollution) => {
                   setAirPollution(airPollution);
-
-
-
-                  // Create a new Weather component and add it to the instances
+  
                   const newWeatherComponent = (
                     <WeatherComponent
-                      key={componentInstances.length} // Make sure to provide a unique key
+                      key={componentInstances.length}
                       city={data.name}
                       country={data.sys.country}
                       temperature={Math.round(data.main.temp)}
@@ -83,12 +89,17 @@ function Weather() {
                       lon={data.coord.lon}
                       lat={data.coord.lat}
                       forecastDataList={forecastData}
+                      visibility={data.visibility}
                     />
                   );
-
-                  setComponentInstances(prevInstances => [...prevInstances, newWeatherComponent]);
+  
+                  setComponentInstances((prevInstances) => [...prevInstances, newWeatherComponent]);
                 });
             });
+        })
+        .catch((error) => {
+          console.error(`Error fetching weather data: ${error.message}`);
+          setIsCityError(true);
         });
     }
   };
@@ -114,6 +125,12 @@ function Weather() {
         {isDuplicate && (
           <div>
             <p className="duplicateCity">Duplicate City</p>
+          </div>
+        )}
+
+        {isCityError && (
+          <div>
+            <p className="cityError">Error Loading City. Please Enter Another City.</p>
           </div>
         )}
 

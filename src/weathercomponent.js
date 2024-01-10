@@ -1,13 +1,11 @@
 import React from "react";
-// import { useNavigate} from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion"
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import { useState } from "react";
 import './App.css'
 
 
 const WeatherComponent = (props) => {
-    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelslike, timezone, sunrise, sunset, airPollution, weathericon, lon, lat, forecastDataList, onDelete } = props;
+    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelslike, timezone, sunrise, sunset, airPollution, weathericon, lon, lat, forecastDataList, onDelete, visibility } = props;
 
     // const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
@@ -66,7 +64,7 @@ const WeatherComponent = (props) => {
                 airQual = 'Fair';
                 break;
             case 3:
-                airQual = 'Moderade';
+                airQual = 'Moderate';
                 break;
             case 4:
                 airQual = "Poor";
@@ -137,7 +135,7 @@ const WeatherComponent = (props) => {
         <div className={`weatherDiv ${isExpanded ? 'expandedDiv' : ''}`}>
             <p className={`city ${isExpanded ? 'expandedCity' : ''}`}>{city}, {country}</p>
             <p className={`temperature ${isExpanded ? 'expandedTemp' : ''}`}>{temperature + '\u00B0'}</p>
-            <div className={`test ${isExpanded ? 'expandedTest' : ''}`}>
+            <div className={`weatherSec ${isExpanded ? 'expandedWeatherSec' : ''}`}>
                 <p className={`conditions ${isExpanded ? 'expandedConditions' : ''}`}>
                     <span>{conditions}</span>
                     <img className="weatherIcon" src={`${iconBaseUrl}${weathericon}@2x.png`} alt="Weather Icon" />
@@ -149,10 +147,10 @@ const WeatherComponent = (props) => {
                         <div className="forecast">
                             {forecastDataList.list && forecastDataList.list.slice(0, 7).map((item, index) => (
                                 <div key={index} className="forecastDiv">
-                                    <p>{getDate(index)}</p>
-                                    <p>{Math.round(item.main.temp)}</p>
+                                    <p className="forecastDate">{getDate(index)}</p>
+                                    <p className="forecastTemp">{Math.round(item.main.temp) + '\u00B0'}</p>
                                     <p>{item.weather.icon}</p>
-                                    <img src={`${iconBaseUrl}${item.weather[0].icon}@2x.png`} alt="Weather Icon"></img>
+                                    <img className="forecastIcon" src={`${iconBaseUrl}${item.weather[0].icon}@2x.png`} alt="Weather Icon"></img>
 
                                 </div>
                             ))}
@@ -167,59 +165,75 @@ const WeatherComponent = (props) => {
                                 center={center}
                                 options={{
                                     disableDefaultUI: true,
-                                    zoomControl: false,
+                                    zoomControl: true,
+                                    controlSize: 20,
                                 }}
                             />
                         </div>
 
+                        <div className="feelsLike">
+                            <p className="feelsLikeTitle"> Feels Like</p>
+                            <p className="feelsLikeVal">{Math.round(feelslike) + '\u00B0'}</p>
+
+                        </div>
+
                         <div className="wind">
-                            <p>Wind</p>
-                            <p>{windspeed} MPH</p>
-                            <p>{winddeg + '\u00B0'} {windDirection(winddeg)}</p>
-
-
+                            <p className="windTitle">Wind</p>
+                            <div className="windGrid">
+                                <div className="windSpeed">
+                                    <p>{windspeed} MPH</p>
+                                </div>
+                                <div className="windDir">
+                                    <p>{winddeg + '\u00B0'} {windDirection(winddeg)}</p>
+                                    <p className="arrow-container" style={{ transform: `rotate(${-winddeg}deg) skew(-15deg, -15deg)` }}>
+                                        <span className="arrow top-narrow-arrow"></span>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
 
 
                         <div className="sunrise">
-                            <p>Sunrise</p>
+                            <p className="sunriseTitle">Sunrise</p>
                             {/* <p>{sunriseHours}:{sunriseMinutes} AM UTC</p> */}
                             <p>{sunrisedate.toUTCString()}</p>
-                            
+
                         </div>
 
                         <div className="sunset">
-                            <p>Sunset</p>
+                            <p className="sunsetTitle">Sunset</p>
                             {/* <p>{sunsetHours}:{sunsetMinutes} PM UTC</p> */}
                             <p>{sunsetdate.toUTCString()}</p>
-                            
 
-                        </div>
-
-                        <div className="humidity">
-                            <p>Humidity</p>
-                            <p>{humidity}</p>
-                        </div>
-
-                        <div className="pressure">
-                            <p>Pressure</p>
-                            <p>{pressure}</p>
 
                         </div>
 
                         <div className="airQuality">
-                            <p>Air Quality</p>
+                            <p className="airQualityTitle">Air Quality</p>
                             <p>{airPollution}</p>
                             <p>{airQuality(airPollution)}</p>
-                            <input type="range" min="0" max="5" value={airPollution} disabled="true" className="airQualSlider"></input>
+                            <input type="range" min="0" max="5" value={airPollution} disabled={true} className="airQualSlider"></input>
                         </div>
 
-                        <div className="feelsLike">
-                            <p> Feels Like</p>
-                            <p>{Math.round(feelslike)}</p>
+                        <div className="humidity">
+                            <p className="humidityTitle">Humidity</p>
+                            <p>{humidity}</p>
+                        </div>
+
+                        <div className="pressure">
+                            <p className="pressureTitle">Pressure</p>
+                            <p>{pressure}</p>
 
                         </div>
+
+                        <div className="visibility">
+                            <p className="visibilityTitle">Visibility</p>
+                            <p>{Math.round((visibility / 1000) / 1.609)} Mi</p>
+
+                        </div>
+
+
 
 
 
@@ -237,7 +251,7 @@ const WeatherComponent = (props) => {
             <button className="expandButton" onClick={() => setIsExpanded(!isExpanded)}>
                 {isExpanded ? 'Minimize' : 'Expand'}
             </button>
-            <button className="delete" onClick={onDelete}>x</button>
+            <button className="delete" onClick={onDelete}>X</button>
         </div>
     );
 };

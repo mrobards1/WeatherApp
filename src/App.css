@@ -9,7 +9,7 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  background-color: gray;
+  background-color: #15719f;
 }
 
 
@@ -42,7 +42,7 @@
 }
 
 .weatherDiv {
-  background-color: lightblue;
+  background-color: #62a1c7;
   min-width: 350px;
   min-height: 100px;
   margin-bottom: 10px;
@@ -60,6 +60,7 @@
   left: 10px;
   display: flex;
   top: 30px;
+  color: white;
 }
 
 .city.expandedCity {
@@ -77,31 +78,33 @@
   font-weight: bold;
   top: 50%;
   transform: translateY(-50%);
+  color: white;
 }
 
 .temperature.expandedTemp {
-  font-size: 60px;
+  font-size: 66px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   text-align: center;
-  top: 55px;
+  top: 65px;
+  color: white;
 }
 
 
-.test {
+.weatherSec {
   font-size: 20px;
   position: absolute;
   bottom: 0;
   padding: 0;
   left: 10px;
   width: 100%;
-  color: black;
+  color: white;
   text-transform: capitalize;
 }
 
-.test.expandedTest {
+.weatherSec.expandedWeatherSec {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -117,6 +120,7 @@
 
 .conditions {
   display: inline-block;
+  margin-top: 15px;
 }
 
 .weatherIcon {
@@ -147,10 +151,6 @@
 }
 
 
-.testp {
-  width: 400px;
-}
-
 .gridWrapper {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -159,13 +159,14 @@
   justify-content: center;
   margin: 0 auto;
   grid-gap: 10px; 
+  
 }
 
 .map-container {
   border-radius: 10px;
   overflow: hidden; /* Ensure the border-radius is applied */
   grid-column: span 2;
-  grid-row: span 3;
+  grid-row: span 2;
   background-color: black;
 }
 
@@ -177,7 +178,10 @@
   grid-template-columns: repeat(7, 1fr);
   gap: 10px; /* Adjust the gap between forecastDiv elements */
   height: 100px;
+  background-color: #15719f;
+  border-radius: 10px;
 }
+
 
 .forecast::-webkit-scrollbar {
   display: none;
@@ -186,45 +190,98 @@
 
 .forecastDiv {
   height: 100px;
-  background-color: bisque;
-  border-radius: 10px;
+  margin-right: 10px
+}
+
+.forecastDate {
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.forecastTemp {
+  font-size: 30px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.forecastIcon {
+  margin-top: -15px;
+  width: 75px;
+  height: 75px;
+ 
 }
 
 .wind {
- 
-  background-color: grey;
-  height: 100px;
-  width: 100%;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  grid-column: span 2;
 }
 
+.windGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 10px; /* Add row gap for spacing */
+  text-align: center; /* Center the content within each grid cell */
+}
+
+.windSpeed, .windDir {
+  width: 100%; /* Make sure the content within grid cells takes the full width */
+}
+
+.windSpeed {
+  grid-column: span 1;
+  background-color: black;
+}
+
+.windDir {
+  grid-column: span 1;
+}
+
+.arrow {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-top: 6px solid white;
+  border-right: 6px solid white;
+ 
+}
+
+
+
 .sunrise {
-  
-  background-color: brown;
-  border-radius: 10px;
 }
 
 .sunset {
-  background-color: palegoldenrod;
-  border-radius: 10px;
 }
 
 .humidity {
-  background-color: blueviolet;
-  border-radius: 10px;
 }
 
 .pressure {
-  background-color: red;
-  border-radius: 10px;
 }
 
 .airQuality {
   grid-column: span 2;
-  background-color: blue;
+}
+
+.feelsLike {
+}
+
+.feelsLikeVal {
+  font-size: 30px;
+  margin-top: 13px;
+}
+
+.wind, .sunrise, .sunset, .humidity, .pressure, .airQuality, .feelsLike, .visibility {
+  background-color: #15719f;
   border-radius: 10px;
 }
 
+.windTitle, .sunriseTitle, .sunsetTitle, .humidityTitle, .pressureTitle, .airQualityTitle, .feelsLikeTitle {
+  margin-top: 5px;
+}
 .airQualSlider {
   width: 80%;
   height: 5px;

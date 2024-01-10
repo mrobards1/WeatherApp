@@ -185,7 +185,7 @@ const WeatherComponent = (props) => {
                                 </div>
                                 <div className="windDir">
                                     <p>{winddeg + '\u00B0'} {windDirection(winddeg)}</p>
-                                    <p className="arrow-container" style={{ transform: `rotate(${-winddeg}deg) skew(-15deg, -15deg)` }}>
+                                    <p style={{ transform: `rotate(${(winddeg + 135)}deg) skew(-15deg, -15deg)` }}>
                                         <span className="arrow top-narrow-arrow"></span>
                                     </p>
                                 </div>

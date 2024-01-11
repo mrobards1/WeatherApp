@@ -184,7 +184,7 @@ const WeatherComponent = (props) => {
                             <p className="windTitle">Wind</p>
                             <div className="windGrid">
                                 <div className="windSpeed">
-                                    <p>{windspeed} <span className="windMPH">MPH</span></p>
+                                    <p>{windspeed} <span className="smallNum">MPH</span></p>
                                 </div>
                                 <div className="windDir">
                                     <div>
@@ -192,7 +192,7 @@ const WeatherComponent = (props) => {
                                             <span className="arrow"></span>
                                         </p>
                                         <p style={{ display: 'inline-block' }}>
-                                            <span className="windMPH">{windDirection(winddeg)}</span>
+                                            <span className="smallNum">{windDirection(winddeg)}</span>
                                         </p>
                                     </div>
 
@@ -202,7 +202,8 @@ const WeatherComponent = (props) => {
 
                         <div className="humidity">
                             <p className="humidityTitle">Humidity</p>
-                            <p className="numval">{humidity}</p>
+                            <p className="numval">{humidity} <span className="smallNum">%</span></p>
+                            <input type="range" min="0" max="100" value={humidity} disabled={true} className="airQualSlider"></input>
                         </div>
 
 
@@ -230,13 +231,13 @@ const WeatherComponent = (props) => {
 
                         <div className="pressure">
                             <p className="pressureTitle">Pressure</p>
-                            <p className="numval">{pressure}</p>
+                            <p className="numval">{(pressure * 0.02953).toFixed(1)} <span className="smallNum">inHg</span></p>
 
                         </div>
 
                         <div className="visibility">
                             <p className="visibilityTitle">Visibility</p>
-                            <p className="numval">{Math.round((visibility / 1000) / 1.609)} Mi</p>
+                            <p className="numval">{Math.round((visibility / 1000) / 1.609)} <span className="smallNum">mi</span></p>
 
                         </div>
 

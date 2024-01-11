@@ -241,8 +241,8 @@
   
 }
 
-.windMPH {
-  font-size: 15px;
+.smallNum {
+  font-size: 20px;
 }
 
 .windDir {
@@ -256,7 +256,8 @@
   height: 30px;
   border-top: 10px solid white;
   border-right: 10px solid white;
-  margin-right: 15px;
+  margin-right: 22px;
+
  
 }
 

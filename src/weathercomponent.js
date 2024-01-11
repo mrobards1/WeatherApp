@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker, OverlayView } from '@react-google-maps/api';
 import { useState } from "react";
 import './App.css'
 
@@ -42,15 +42,19 @@ const WeatherComponent = (props) => {
 
     const sunriseMill = sunrise * 1000;
     const sunrisedate = new Date(sunriseMill);
-
-    const sunriseHours = sunrisedate.getHours();
-    const sunriseMinutes = sunrisedate.getMinutes();
-
+    
     const sunsetMill = sunset * 1000;
     const sunsetdate = new Date(sunsetMill);
+    
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      timeZone: 'UTC'
+    };
+    
+    const formattedSunrise = sunrisedate.toLocaleTimeString('en-US', options);
+    const formattedSunset = sunsetdate.toLocaleTimeString('en-US', options);
 
-    const sunsetHours = sunsetdate.getHours();
-    const sunsetMinutes = sunsetdate.getMinutes();
 
 
 
@@ -157,10 +161,9 @@ const WeatherComponent = (props) => {
 
                         </div>
 
-                        <div className="map-container">
+                        <div className="map-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <GoogleMap
-
-                                mapContainerStyle={{ width: '100%', height: '100%' }}
+                                mapContainerStyle={{ width: '93%', height: '93%', borderRadius: '5px' }}
                                 zoom={9}
                                 center={center}
                                 options={{
@@ -173,7 +176,7 @@ const WeatherComponent = (props) => {
 
                         <div className="feelsLike">
                             <p className="feelsLikeTitle"> Feels Like</p>
-                            <p className="feelsLikeVal">{Math.round(feelslike) + '\u00B0'}</p>
+                            <p className="numval">{Math.round(feelslike) + '\u00B0'}</p>
 
                         </div>
 
@@ -181,15 +184,25 @@ const WeatherComponent = (props) => {
                             <p className="windTitle">Wind</p>
                             <div className="windGrid">
                                 <div className="windSpeed">
-                                    <p>{windspeed} MPH</p>
+                                    <p>{windspeed} <span className="windMPH">MPH</span></p>
                                 </div>
                                 <div className="windDir">
-                                    <p>{winddeg + '\u00B0'} {windDirection(winddeg)}</p>
-                                    <p style={{ transform: `rotate(${(winddeg + 135)}deg) skew(-15deg, -15deg)` }}>
-                                        <span className="arrow top-narrow-arrow"></span>
-                                    </p>
+                                    <div>
+                                        <p style={{ display: 'inline-block', transform: `rotate(${(winddeg + 135)}deg) skew(-15deg, -15deg)` }}>
+                                            <span className="arrow"></span>
+                                        </p>
+                                        <p style={{ display: 'inline-block' }}>
+                                            <span className="windMPH">{windDirection(winddeg)}</span>
+                                        </p>
+                                    </div>
+
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="humidity">
+                            <p className="humidityTitle">Humidity</p>
+                            <p className="numval">{humidity}</p>
                         </div>
 
 
@@ -197,40 +210,41 @@ const WeatherComponent = (props) => {
                         <div className="sunrise">
                             <p className="sunriseTitle">Sunrise</p>
                             {/* <p>{sunriseHours}:{sunriseMinutes} AM UTC</p> */}
-                            <p>{sunrisedate.toUTCString()}</p>
+                            <p>{formattedSunrise} GMT</p>
+                            <img className="sunIcon" src="/img/sunrise.png" alt="Sunrise Image"></img>
 
                         </div>
 
                         <div className="sunset">
                             <p className="sunsetTitle">Sunset</p>
                             {/* <p>{sunsetHours}:{sunsetMinutes} PM UTC</p> */}
-                            <p>{sunsetdate.toUTCString()}</p>
+                            <p>{formattedSunset} GMT</p>
+                            <img className="sunIcon" src="/img/sunset.png" alt="Sunset Image"></img>
+                            
 
 
                         </div>
 
-                        <div className="airQuality">
-                            <p className="airQualityTitle">Air Quality</p>
-                            <p>{airPollution}</p>
-                            <p>{airQuality(airPollution)}</p>
-                            <input type="range" min="0" max="5" value={airPollution} disabled={true} className="airQualSlider"></input>
-                        </div>
 
-                        <div className="humidity">
-                            <p className="humidityTitle">Humidity</p>
-                            <p>{humidity}</p>
-                        </div>
+                        
 
                         <div className="pressure">
                             <p className="pressureTitle">Pressure</p>
-                            <p>{pressure}</p>
+                            <p className="numval">{pressure}</p>
 
                         </div>
 
                         <div className="visibility">
                             <p className="visibilityTitle">Visibility</p>
-                            <p>{Math.round((visibility / 1000) / 1.609)} Mi</p>
+                            <p className="numval">{Math.round((visibility / 1000) / 1.609)} Mi</p>
 
+                        </div>
+
+                        <div className="airQuality">
+                            <p className="airQualityTitle">Air Quality</p>
+                            {/* <p>{airPollution}</p> */}
+                            <p className="numval">{airQuality(airPollution)}</p>
+                            <input type="range" min="0" max="5" value={airPollution} disabled={true} className="airQualSlider"></input>
                         </div>
 
 

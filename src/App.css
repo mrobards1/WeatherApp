@@ -9,7 +9,7 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  background-color: #15719f;
+  background: linear-gradient(#ffffff, #ffd7b5, #ffb38a);
 }
 
 
@@ -42,7 +42,7 @@
 }
 
 .weatherDiv {
-  background-color: #62a1c7;
+  background-color: #2D5987;
   min-width: 350px;
   min-height: 100px;
   margin-bottom: 10px;
@@ -100,7 +100,7 @@
   padding: 0;
   left: 10px;
   width: 100%;
-  color: white;
+  color: #2D5987;
   text-transform: capitalize;
 }
 
@@ -254,8 +254,8 @@
   display: inline-block;
   width: 30px;
   height: 30px;
-  border-top: 10px solid white;
-  border-right: 10px solid white;
+  border-top: 10px solid #2D5987;
+  border-right: 10px solid #2D5987;
   margin-right: 22px;
 
  
@@ -263,11 +263,14 @@
 
 
 
-.sunrise {
+.sunTime {
+  margin-top: 15px;
 }
 
-.sunset {
+.sunTimeVal {
+  font-size: 20px;
 }
+
 
 .sunIcon {
   width: 40px;
@@ -292,13 +295,20 @@
   margin-top: 13px;
 }
 
-.wind, .sunrise, .sunset, .humidity, .pressure, .airQuality, .feelsLike, .visibility {
-  background-color: #15719f;
+.wind, .sunrise, .sunset, .humidity, .pressure, .airQuality, .feelsLike, .visibility, .forecast, .map-container {
+  background-color: #ffd7b5;
   border-radius: 10px;
+}
+
+.conditionMain {
+  color: white;
+  font-size: 18px;
 }
 
 .windTitle, .sunriseTitle, .sunsetTitle, .humidityTitle, .pressureTitle, .airQualityTitle, .feelsLikeTitle, .visibilityTitle {
   margin-top: 5px;
+  color: #2D5987;
+  font-weight: bold;
 }
 .airQualSlider {
   width: 80%;
@@ -317,8 +327,8 @@
   appearance: none;
   width: 9px;
   height: 9px;
-  background-color: #ffffff;
-  outline: 3px solid #15719f;
+  background-color: #2D5987;
+  outline: 3px solid #ffd7b5;
   border-radius: 50%;
 }
 

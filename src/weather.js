@@ -138,7 +138,7 @@ function Weather() {
           <div>
 
 
-            <p>Welcome to WeatherApp. Enter a city to get started</p>
+            <p>Welcome! Enter a city to get started</p>
 
 
           </div>

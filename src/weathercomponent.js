@@ -141,7 +141,7 @@ const WeatherComponent = (props) => {
             <p className={`temperature ${isExpanded ? 'expandedTemp' : ''}`}>{temperature + '\u00B0'}</p>
             <div className={`weatherSec ${isExpanded ? 'expandedWeatherSec' : ''}`}>
                 <p className={`conditions ${isExpanded ? 'expandedConditions' : ''}`}>
-                    <span>{conditions}</span>
+                    <span className="conditionMain">{conditions}</span>
                     <img className="weatherIcon" src={`${iconBaseUrl}${weathericon}@2x.png`} alt="Weather Icon" />
                 </p>
                 {isExpanded && (
@@ -211,7 +211,7 @@ const WeatherComponent = (props) => {
                         <div className="sunrise">
                             <p className="sunriseTitle">Sunrise</p>
                             {/* <p>{sunriseHours}:{sunriseMinutes} AM UTC</p> */}
-                            <p>{formattedSunrise} GMT</p>
+                            <p className="sunTime"><span className="sunTimeVal">{formattedSunrise}</span> GMT</p>
                             <img className="sunIcon" src="/img/sunrise.png" alt="Sunrise Image"></img>
 
                         </div>
@@ -219,7 +219,7 @@ const WeatherComponent = (props) => {
                         <div className="sunset">
                             <p className="sunsetTitle">Sunset</p>
                             {/* <p>{sunsetHours}:{sunsetMinutes} PM UTC</p> */}
-                            <p>{formattedSunset} GMT</p>
+                            <p  className="sunTime"><span className="sunTimeVal">{formattedSunset}</span> GMT</p>
                             <img className="sunIcon" src="/img/sunset.png" alt="Sunset Image"></img>
                             
 

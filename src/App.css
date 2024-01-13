@@ -26,19 +26,27 @@
   padding: 15px;
   width: 80%;
   margin: auto;
-  border: 1px solid lightblue;
-  border-radius: 6px;
+  border: none;
   font-size: 16px;
   margin-bottom: 40px;
+  background-color: #2D5987;
+  border-radius: 10px;
+  color: white;
+}
+
+.input::placeholder {
+  color: white
 }
 
 .input:focus {
   outline: none;
 }
 
-.duplicateCity {
+.duplicateCity, .errorCity{
   font-size: 25px;
-  margin-top: -40px;
+  margin-top: -35px;
+  font-weight: bold;
+  color: #2D5987
 }
 
 .weatherDiv {
@@ -47,9 +55,9 @@
   min-height: 100px;
   margin-bottom: 10px;
   border-radius: 10px;
-  
   display: flex;
   position: relative;
+  transition: max-height 0.5s ease-in-out;
   
 }
 
@@ -115,7 +123,7 @@
 }
 
 .weatherContainer {
-  margin-top: 20px; /* Adjust the margin-top value to move the weatherIcon down */
+  margin-top: 20px; 
 }
 
 .conditions {
@@ -126,28 +134,19 @@
 .weatherIcon {
   width: 60px;
   height: 60px;
-  vertical-align: middle; /* Aligns the image vertically with text */
-   /* Adjust the margin-top value to move the weatherIcon down */
+  vertical-align: middle; 
   
   
 }
 
-.delete {
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  border-radius: 50%;
-  border: none;
-  font-size: 10px;
-}
+
 
 .expandedDiv {
   width: 1000px;
   height: 530px;
   display: flex;
   position: relative;
+  
 }
 
 
@@ -193,7 +192,6 @@
 
 .forecastDiv {
   height: 100px;
-  margin-right: 10px
 }
 
 .forecastDate {
@@ -237,7 +235,7 @@
 .windSpeed {
   grid-column: span 1;
   font-size: 30px;
-  border-right: 2px solid #62a1c7;
+  border-right: 2px solid #2D5987;
   
 }
 
@@ -277,18 +275,10 @@
   height: 40px;
 }
 
-.humidity {
-}
-
-.pressure {
-}
-
 .airQuality {
   grid-column: span 2;
 }
 
-.feelsLike {
-}
 
 .numval {
   font-size: 30px;
@@ -333,16 +323,52 @@
 }
 
 .expandButton {
-  width: 40px;
+  width: 15px;
   height: 15px;
   position: absolute;
   top: 5px;
   right: 27px;
-  border-radius: 2px;
+  border-radius: 50%;
   border: none;
-  font-size: 10px;
-  
+  font-size: 20px;
+  background-color: #ffffff;
+  color: #2D5987;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.delete {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border-radius: 50%;
+  border: none;
+  font-size: 12px;
+  background-color: #ffffff;
+  color: #2D5987;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.delete:hover, .expandButton:hover {
+  background-color: #ffd7b5;
+  color: #ffffff;
+}
+
+
+/* @media screen and (max-width: 900px) {
+  .gridWrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .map-container {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+} */
 
 

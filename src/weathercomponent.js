@@ -1,21 +1,19 @@
 import React from "react";
-import { GoogleMap, useLoadScript, Marker, OverlayView } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript} from '@react-google-maps/api';
 import { useState } from "react";
 import './App.css'
 
 
+const libraries = ['places'];
+
 const WeatherComponent = (props) => {
-    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelslike, timezone, sunrise, sunset, airPollution, weathericon, lon, lat, forecastDataList, onDelete, visibility } = props;
+    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelslike, sunrise, sunset, airPollution, weathericon, lon, lat, forecastDataList, onDelete, visibility } = props;
 
     // const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
     const iconBaseUrl = "https://openweathermap.org/img/wn/";
 
 
-    const handleDelete = () => {
-        onDelete();
-    }
-    const libraries = ['places'];
 
 
     const center = {
@@ -29,6 +27,11 @@ const WeatherComponent = (props) => {
     });
 
     const getDate = (index) => {
+
+        if (index === 0) {
+            return 'Today';
+        }
+
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const currentDate = new Date();
         let dayIndex = currentDate.getDay() + index;
@@ -124,13 +127,6 @@ const WeatherComponent = (props) => {
         return windDir;
     };
 
-    if (loadError) {
-        return <div>Error loading maps</div>;
-    }
-
-    if (!isLoaded) {
-        return <div>Loading maps</div>;
-    }
 
 
 
@@ -264,7 +260,7 @@ const WeatherComponent = (props) => {
 
 
             <button className="expandButton" onClick={() => setIsExpanded(!isExpanded)}>
-                {isExpanded ? 'Minimize' : 'Expand'}
+                {isExpanded ? '-' : '+'}
             </button>
             <button className="delete" onClick={onDelete}>X</button>
         </div>

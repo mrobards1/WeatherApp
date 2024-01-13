@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect} from "react";
 
 import WeatherComponent from './weathercomponent';
 import './App.css';
@@ -15,10 +15,8 @@ function Weather() {
   const [forecastData, setForecastData] = useState({});
   const [isDuplicate, setIsDuplicate] = useState(false);
   const [isCityError, setIsCityError] = useState(false);
-  const [hourlyForecast, setHourlyForecast] = useState({});
   const [airPollution, setAirPollution] = useState({});
   const [componentInstances, setComponentInstances] = useState([]);
-  const [weatherIcon, setWeatherIcon] = useState("");
 
   useEffect(() => {
     if (isDuplicate) {
@@ -26,7 +24,13 @@ function Weather() {
         setIsDuplicate(false);
       }, 3000); // Clear the duplicate message after 3 seconds
     }
-  }, [isDuplicate]);
+    
+    if (isCityError) {
+      setTimeout(() => {
+        setIsCityError(false);
+      }, 3000); // Clear the error message after 3 seconds
+    }
+  }, [isDuplicate, isCityError]);
 
 
   const getWeather = (event) => {
@@ -43,7 +47,7 @@ function Weather() {
       } else {
         setIsDuplicate(false);
       }
-  
+
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApi.key}&units=imperial`)
         .then((response) => {
           if (!response.ok) {
@@ -55,19 +59,19 @@ function Weather() {
         .then((data) => {
           setWeatherData(data);
           setCity("");
-  
+
           fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`)
             .then((response) => response.json())
             .then((forecastData) => {
               setForecastData(forecastData);
-  
+
               fetch(
                 `http://api.openweathermap.org/data/2.5/air_pollution?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`
               )
                 .then((response) => response.json())
                 .then((airPollution) => {
                   setAirPollution(airPollution);
-  
+
                   const newWeatherComponent = (
                     <WeatherComponent
                       key={componentInstances.length}
@@ -80,7 +84,6 @@ function Weather() {
                       pressure={data.main.pressure}
                       humidity={data.main.humidity}
                       feelslike={data.main.feels_like}
-                      timezone={data.timezone}
                       sunrise={data.sys.sunrise}
                       sunset={data.sys.sunset}
                       airPollution={airPollution.list[0].main.aqi}
@@ -92,7 +95,7 @@ function Weather() {
                       visibility={data.visibility}
                     />
                   );
-  
+
                   setComponentInstances((prevInstances) => [...prevInstances, newWeatherComponent]);
                 });
             });
@@ -130,20 +133,11 @@ function Weather() {
 
         {isCityError && (
           <div>
-            <p className="cityError">Error Loading City. Please Enter Another City.</p>
+            <p className="errorCity">Error Loading City. Please Enter Another City.</p>
           </div>
         )}
 
-        {typeof weatherData.main === 'undefined' && (
-          <div>
-
-
-            <p>Welcome! Enter a city to get started</p>
-
-
-          </div>
-        )}
-
+      
         {componentInstances.map((component, index) => (
           React.cloneElement(component, { onDelete: () => handleDelete(index) })
         ))}

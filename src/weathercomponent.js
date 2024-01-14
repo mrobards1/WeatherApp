@@ -1,6 +1,7 @@
 import React from "react";
-import { GoogleMap, useLoadScript} from '@react-google-maps/api';
+import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import { useState } from "react";
+import { DateTime } from 'luxon';
 import './App.css'
 
 
@@ -43,18 +44,35 @@ const WeatherComponent = (props) => {
     }
 
 
+
+    function getTime(dt, timezone, index) {
+        let formattedTime = '';
+        
+        if (index === 0) {
+            formattedTime = 'Now';
+        } else {
+            const localDateTime = DateTime.fromSeconds(dt, { zone: timezone });
+            formattedTime = localDateTime.toLocaleString({ hour: 'numeric', minute: 'numeric', hour12: true });
+        }
+    
+        return formattedTime;
+    }
+
+
+
+
     const sunriseMill = sunrise * 1000;
     const sunrisedate = new Date(sunriseMill);
-    
+
     const sunsetMill = sunset * 1000;
     const sunsetdate = new Date(sunsetMill);
-    
+
     const options = {
-      hour: 'numeric',
-      minute: 'numeric',
-      timeZone: 'UTC'
+        hour: 'numeric',
+        minute: 'numeric',
+        timeZone: 'UTC'
     };
-    
+
     const formattedSunrise = sunrisedate.toLocaleTimeString('en-US', options);
     const formattedSunset = sunsetdate.toLocaleTimeString('en-US', options);
 
@@ -130,6 +148,7 @@ const WeatherComponent = (props) => {
 
 
 
+
     return (
 
         <div className={`weatherDiv ${isExpanded ? 'expandedDiv' : ''}`}>
@@ -145,13 +164,24 @@ const WeatherComponent = (props) => {
 
                     <div className="gridWrapper">
                         <div className="forecast">
-                            {forecastDataList.list && forecastDataList.list.slice(0, 7).map((item, index) => (
+
+                            {forecastDataList && forecastDataList.daily && forecastDataList.daily.map((item, index) => (
                                 <div key={index} className="forecastDiv">
                                     <p className="forecastDate">{getDate(index)}</p>
-                                    <p className="forecastTemp">{Math.round(item.main.temp) + '\u00B0'}</p>
-                                    <p>{item.weather.icon}</p>
+                                    <p className="forecastTemp">{Math.round(item.temp.min) + '\u00B0'}</p>
                                     <img className="forecastIcon" src={`${iconBaseUrl}${item.weather[0].icon}@2x.png`} alt="Weather Icon"></img>
+                                </div>
+                            ))}
 
+                        </div>
+
+                        <div className="forecast">
+
+                            {forecastDataList && forecastDataList.hourly && forecastDataList.hourly.map((item, index) => (
+                                <div key={index} className="forecastDiv">
+                                    <p className="forecastDate">{getTime(item.dt, forecastDataList.timezone, index)}</p>
+                                    <p className="forecastTemp">{Math.round(item.temp) + '\u00B0'}</p>
+                                    <img className="forecastIcon" src={`${iconBaseUrl}${item.weather[0].icon}@2x.png`} alt="Weather Icon"></img>
                                 </div>
                             ))}
 
@@ -215,15 +245,15 @@ const WeatherComponent = (props) => {
                         <div className="sunset">
                             <p className="sunsetTitle">Sunset</p>
                             {/* <p>{sunsetHours}:{sunsetMinutes} PM UTC</p> */}
-                            <p  className="sunTime"><span className="sunTimeVal">{formattedSunset}</span> GMT</p>
+                            <p className="sunTime"><span className="sunTimeVal">{formattedSunset}</span> GMT</p>
                             <img className="sunIcon" src="/img/sunset.png" alt="Sunset Image"></img>
-                            
+
 
 
                         </div>
 
 
-                        
+
 
                         <div className="pressure">
                             <p className="pressureTitle">Pressure</p>

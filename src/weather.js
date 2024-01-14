@@ -60,10 +60,13 @@ function Weather() {
           setWeatherData(data);
           setCity("");
 
-          fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`)
+          fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude={part}&appid=${weatherApi.key}&units=imperial`)
             .then((response) => response.json())
             .then((forecastData) => {
               setForecastData(forecastData);
+
+
+              
 
               fetch(
                 `http://api.openweathermap.org/data/2.5/air_pollution?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`

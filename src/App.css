@@ -143,7 +143,7 @@
 
 .expandedDiv {
   width: 1000px;
-  height: 530px;
+  min-height: 530px;
   display: flex;
   position: relative;
   
@@ -177,11 +177,13 @@
   overflow-y: hidden;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 10px; /* Adjust the gap between forecastDiv elements */
+  gap: 10px; 
   height: 100px;
   background-color: #15719f;
   border-radius: 10px;
   padding-left: 15px;
+  white-space: nowrap; /* Keep items on the same line */
+  grid-auto-flow: column;
 }
 
 
@@ -361,9 +363,10 @@
 }
 
 
-/* @media screen and (max-width: 900px) {
+/* @media screen and (max-width: 1000px) {
   .gridWrapper {
     grid-template-columns: repeat(4, 1fr);
+    
   }
   .map-container {
     grid-column: span 1;

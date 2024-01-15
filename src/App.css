@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  
+
 }
 
 .container {
@@ -19,7 +19,7 @@
   justify-content: center;
   align-items: center;
   padding: 25px;
-  
+
 }
 
 .input {
@@ -42,7 +42,8 @@
   outline: none;
 }
 
-.duplicateCity, .errorCity{
+.duplicateCity,
+.errorCity {
   font-size: 25px;
   margin-top: -35px;
   font-weight: bold;
@@ -50,7 +51,7 @@
 }
 
 .weatherDiv {
-  background-color: #2D5987;
+  background-color: rgba(45, 89, 135, 0.8);
   min-width: 350px;
   min-height: 100px;
   margin-bottom: 10px;
@@ -58,7 +59,7 @@
   display: flex;
   position: relative;
   transition: max-height 0.5s ease-in-out;
-  
+
 }
 
 .city {
@@ -72,10 +73,10 @@
 }
 
 .city.expandedCity {
-  font-size: 35px; /* Adjust the font size as needed */
+  font-size: 35px;
   display: flex;
-  left: 50%; /* Center the text horizontally */
-  transform: translateX(-50%); /* Adjust the horizontal position */
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
 }
 
@@ -122,8 +123,11 @@
   font-size: 15px;
 }
 
+
+
+
 .weatherContainer {
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .conditions {
@@ -134,19 +138,19 @@
 .weatherIcon {
   width: 60px;
   height: 60px;
-  vertical-align: middle; 
-  
-  
+  vertical-align: middle;
+
+
 }
 
 
 
 .expandedDiv {
   width: 1000px;
-  min-height: 530px;
+  height: 780px;
   display: flex;
   position: relative;
-  
+
 }
 
 
@@ -157,32 +161,32 @@
   width: 85%;
   justify-content: center;
   margin: 0 auto;
-  grid-gap: 10px; 
+  grid-gap: 10px;
   overflow: hidden;
-  
-  
+
+
 }
 
 .map-container {
   border-radius: 10px;
-  overflow: hidden; /* Ensure the border-radius is applied */
+  overflow: hidden;
   grid-column: span 2;
-  grid-row: span 2;
+  grid-row: span 3;
   background-color: #15719f;
 }
 
 .forecast {
-  grid-column: span 4; 
+  grid-column: span 6;
   overflow-x: scroll;
   overflow-y: hidden;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 10px; 
+  gap: 10px;
   height: 100px;
   background-color: #15719f;
   border-radius: 10px;
   padding-left: 15px;
-  white-space: nowrap; /* Keep items on the same line */
+  white-space: nowrap;
   grid-auto-flow: column;
 }
 
@@ -202,20 +206,83 @@
 }
 
 .forecastTemp {
-  font-size: 25px;
-  margin-top: 2px;
+  font-size: 20px;
+  margin-top: -7px;
   text-align: center;
 }
 
 .forecastIcon {
-  margin-top: -19px;
-  width: 75px;
-  height: 75px;
+  margin-top: -5px;
+  width: 55px;
+  height: 55px;
+
+}
+
+
+
+.dailyForecast {
+  grid-column: span 2;
+  grid-row: span 4;
+  max-height: 100%;
+
+  overflow: auto;
  
 }
 
+.dailyForecastDiv {
+  display: flex;
+  margin-top: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  position: relative;
+
+}
+
+
+.bar {
+  background-color: #2D5987;
+  width: 90%; 
+  height: .5px;
+  position: absolute;
+  bottom: -5px; 
+  left: 50%;
+  transform: translateX(-50%);
+
+
+}
+
+.lastItem .bar {
+  display: none; 
+}
+
+.weatherSec.expandedWeatherSec .dailyDate {
+  text-align: left;
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+
+.dailyIcon {
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+}
+
+.dailyTemps p {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 17px;
+}
+
+.max {
+  font-weight: bold;
+}
+
 .wind {
-  
+
   flex-direction: column;
   justify-content: center;
   grid-column: span 2;
@@ -224,13 +291,14 @@
 .windGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-row-gap: 10px; /* Add row gap for spacing */
-  text-align: center; /* Center the content within each grid cell */
+  grid-row-gap: 10px;
+  text-align: center;
   margin-top: 15px;
 }
 
-.windSpeed, .windDir {
-  width: 100%; /* Make sure the content within grid cells takes the full width */
+.windSpeed,
+.windDir {
+  width: 100%;
   font-size: 30px;
 }
 
@@ -238,7 +306,7 @@
   grid-column: span 1;
   font-size: 30px;
   border-right: 2px solid #2D5987;
-  
+
 }
 
 .smallNum {
@@ -258,7 +326,7 @@
   border-right: 10px solid #2D5987;
   margin-right: 22px;
 
- 
+
 }
 
 
@@ -287,8 +355,18 @@
   margin-top: 13px;
 }
 
-.wind, .sunrise, .sunset, .humidity, .pressure, .airQuality, .feelsLike, .visibility, .forecast, .map-container {
-  background-color: #ffd7b5;
+.wind,
+.sunrise,
+.sunset,
+.humidity,
+.pressure,
+.airQuality,
+.feelsLike,
+.visibility,
+.forecast,
+.map-container,
+.dailyForecast {
+  background-color: rgba(255, 215, 181, 0.85);
   border-radius: 10px;
 }
 
@@ -297,15 +375,23 @@
   font-size: 18px;
 }
 
-.windTitle, .sunriseTitle, .sunsetTitle, .humidityTitle, .pressureTitle, .airQualityTitle, .feelsLikeTitle, .visibilityTitle {
+.windTitle,
+.sunriseTitle,
+.sunsetTitle,
+.humidityTitle,
+.pressureTitle,
+.airQualityTitle,
+.feelsLikeTitle,
+.visibilityTitle {
   margin-top: 5px;
   color: #2D5987;
   font-weight: bold;
 }
+
 .airQualSlider {
   width: 80%;
   height: 5px;
-  background: linear-gradient(to right, green, yellow,red); /* Adjust gradient colors as needed */
+  background: linear-gradient(to right, green, yellow, red);
   border: none;
   outline: none;
   appearance: none;
@@ -357,7 +443,8 @@
   font-weight: bold;
 }
 
-.delete:hover, .expandButton:hover {
+.delete:hover,
+.expandButton:hover {
   background-color: #ffd7b5;
   color: #ffffff;
 }
@@ -373,5 +460,3 @@
     grid-row: span 1;
   }
 } */
-
-

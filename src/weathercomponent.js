@@ -33,7 +33,7 @@ const WeatherComponent = (props) => {
             return 'Today';
         }
 
-        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         const currentDate = new Date();
         let dayIndex = currentDate.getDay() + index;
         if (dayIndex > 6) {
@@ -47,14 +47,14 @@ const WeatherComponent = (props) => {
 
     function getTime(dt, timezone, index) {
         let formattedTime = '';
-        
+
         if (index === 0) {
             formattedTime = 'Now';
         } else {
             const localDateTime = DateTime.fromSeconds(dt, { zone: timezone });
-            formattedTime = localDateTime.toLocaleString({ hour: 'numeric', minute: 'numeric', hour12: true });
+            formattedTime = localDateTime.toLocaleString({ hour: 'numeric', hour12: true });
         }
-    
+
         return formattedTime;
     }
 
@@ -163,29 +163,57 @@ const WeatherComponent = (props) => {
 
 
                     <div className="gridWrapper">
-                        <div className="forecast">
-
-                            {forecastDataList && forecastDataList.daily && forecastDataList.daily.map((item, index) => (
-                                <div key={index} className="forecastDiv">
-                                    <p className="forecastDate">{getDate(index)}</p>
-                                    <p className="forecastTemp">{Math.round(item.temp.min) + '\u00B0'}</p>
-                                    <img className="forecastIcon" src={`${iconBaseUrl}${item.weather[0].icon}@2x.png`} alt="Weather Icon"></img>
-                                </div>
-                            ))}
-
-                        </div>
 
                         <div className="forecast">
 
                             {forecastDataList && forecastDataList.hourly && forecastDataList.hourly.map((item, index) => (
                                 <div key={index} className="forecastDiv">
                                     <p className="forecastDate">{getTime(item.dt, forecastDataList.timezone, index)}</p>
-                                    <p className="forecastTemp">{Math.round(item.temp) + '\u00B0'}</p>
                                     <img className="forecastIcon" src={`${iconBaseUrl}${item.weather[0].icon}@2x.png`} alt="Weather Icon"></img>
+                                    <p className="forecastTemp">{Math.round(item.temp) + '\u00B0'}</p>
+                                    
                                 </div>
                             ))}
 
                         </div>
+
+                        <div className="dailyForecast">
+
+                            {forecastDataList && forecastDataList.daily && forecastDataList.daily.map((item, index) => (
+                                <div key={index} className={`dailyForecastDiv ${index === forecastDataList.daily.length - 1 ? 'lastItem' : ''}`}>
+
+                                    <div>
+                                        <p className="dailyDate">{getDate(index)}</p>
+                                    </div>
+                                    <div>
+                                        <img className="dailyIcon" src={`${iconBaseUrl}${item.weather[0].icon}@2x.png`} alt="Weather Icon"></img>
+                                    </div>
+                                    <div className="dailyTemps">
+                                        <p className="min">{Math.round(item.temp.min) + '\u00B0'}</p>
+                                        <p className="max">{Math.round(item.temp.max) + '\u00B0'}</p>
+                                    </div>
+
+                                    <div className="bar"></div>
+
+
+                                </div>
+                            ))}
+
+                        </div>
+
+                        <div className="feelsLike">
+                            <p className="feelsLikeTitle"> Feels Like</p>
+                            <p className="numval">{Math.round(feelslike) + '\u00B0'}</p>
+
+                        </div>
+
+                        <div className="humidity">
+                            <p className="humidityTitle">Humidity</p>
+                            <p className="numval">{humidity} <span className="smallNum">%</span></p>
+                            <input type="range" min="0" max="100" value={humidity} disabled={true} className="airQualSlider"></input>
+                        </div>
+
+
 
                         <div className="map-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <GoogleMap
@@ -200,11 +228,7 @@ const WeatherComponent = (props) => {
                             />
                         </div>
 
-                        <div className="feelsLike">
-                            <p className="feelsLikeTitle"> Feels Like</p>
-                            <p className="numval">{Math.round(feelslike) + '\u00B0'}</p>
-
-                        </div>
+                        
 
                         <div className="wind">
                             <p className="windTitle">Wind</p>
@@ -226,11 +250,7 @@ const WeatherComponent = (props) => {
                             </div>
                         </div>
 
-                        <div className="humidity">
-                            <p className="humidityTitle">Humidity</p>
-                            <p className="numval">{humidity} <span className="smallNum">%</span></p>
-                            <input type="range" min="0" max="100" value={humidity} disabled={true} className="airQualSlider"></input>
-                        </div>
+                       
 
 
 

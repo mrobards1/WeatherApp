@@ -10,7 +10,7 @@ import './App.css'
 const libraries = ['places'];
 
 const WeatherComponent = (props) => {
-    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelslike, sunrise, sunset, airPollution, weathericon, lon, lat, forecastDataList, onDelete, visibility } = props;
+    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelslike, sunrise, sunset, timezone, airPollution, weathericon, lon, lat, forecastDataList, onDelete, visibility } = props;
 
     // const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
@@ -56,6 +56,16 @@ const WeatherComponent = (props) => {
             const localDateTime = DateTime.fromSeconds(dt, { zone: timezone });
             formattedTime = localDateTime.toLocaleString({ hour: 'numeric', hour12: true });
         }
+
+        return formattedTime;
+    }
+
+    function sunTime(dt, timezone) {
+    
+
+        const localDateTime = DateTime.fromSeconds(dt, { zone: timezone });
+        let formattedTime = localDateTime.toLocaleString({ hour: 'numeric', minute: 'numeric', hour12: true });
+
 
         return formattedTime;
     }
@@ -259,7 +269,8 @@ const WeatherComponent = (props) => {
                         <div className="sunrise">
                             <p className="sunriseTitle">Sunrise</p>
                             {/* <p>{sunriseHours}:{sunriseMinutes} AM UTC</p> */}
-                            <p className="sunTime"><span className="sunTimeVal">{formattedSunrise}</span> GMT</p>
+                            <p className="sunTime"><span className="sunTimeVal">{sunTime(sunrise, timezone)}</span></p>
+                            
                             <img className="sunIcon" src="/img/sunrise.png" alt="Sunrise Image"></img>
 
                         </div>
@@ -267,7 +278,7 @@ const WeatherComponent = (props) => {
                         <div className="sunset">
                             <p className="sunsetTitle">Sunset</p>
                             {/* <p>{sunsetHours}:{sunsetMinutes} PM UTC</p> */}
-                            <p className="sunTime"><span className="sunTimeVal">{formattedSunset}</span> GMT</p>
+                            <p className="sunTime"><span className="sunTimeVal">{sunTime(sunset, timezone)}</span></p>
                             <img className="sunIcon" src="/img/sunset.png" alt="Sunset Image"></img>
 
 
@@ -312,7 +323,7 @@ const WeatherComponent = (props) => {
 
 
             <button className="expandButton" onClick={() => setIsExpanded(!isExpanded)}>
-                {isExpanded ? <FontAwesomeIcon icon={faMinimize} />: <FontAwesomeIcon icon={faExpand} />}
+                {isExpanded ? <FontAwesomeIcon icon={faMinimize} /> : <FontAwesomeIcon icon={faExpand} />}
             </button>
             <button className="delete" onClick={onDelete}><FontAwesomeIcon icon={faSquareMinus} /></button>
         </div>

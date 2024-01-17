@@ -1,5 +1,7 @@
 import React from "react";
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExpand, faMinimize, faSquareMinus } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 import { DateTime } from 'luxon';
 import './App.css'
@@ -171,7 +173,7 @@ const WeatherComponent = (props) => {
                                     <p className="forecastDate">{getTime(item.dt, forecastDataList.timezone, index)}</p>
                                     <img className="forecastIcon" src={`${iconBaseUrl}${item.weather[0].icon}@2x.png`} alt="Weather Icon"></img>
                                     <p className="forecastTemp">{Math.round(item.temp) + '\u00B0'}</p>
-                                    
+
                                 </div>
                             ))}
 
@@ -228,20 +230,20 @@ const WeatherComponent = (props) => {
                             />
                         </div>
 
-                        
+
 
                         <div className="wind">
                             <p className="windTitle">Wind</p>
                             <div className="windGrid">
                                 <div className="windSpeed">
-                                    <p>{windspeed} <span className="smallNum">MPH</span></p>
+                                    <p className="windSpeedText">{windspeed} <span className="smallNum">MPH</span></p>
                                 </div>
                                 <div className="windDir">
                                     <div>
                                         <p style={{ display: 'inline-block', transform: `rotate(${(winddeg + 135)}deg) skew(-15deg, -15deg)` }}>
                                             <span className="arrow"></span>
                                         </p>
-                                        <p style={{ display: 'inline-block' }}>
+                                        <p className="dir" style={{ display: 'inline-block' }}>
                                             <span className="smallNum">{windDirection(winddeg)}</span>
                                         </p>
                                     </div>
@@ -250,7 +252,7 @@ const WeatherComponent = (props) => {
                             </div>
                         </div>
 
-                       
+
 
 
 
@@ -290,7 +292,7 @@ const WeatherComponent = (props) => {
                         <div className="airQuality">
                             <p className="airQualityTitle">Air Quality</p>
                             {/* <p>{airPollution}</p> */}
-                            <p className="numval">{airQuality(airPollution)}</p>
+                            <p className="airQualVal numval">{airQuality(airPollution)}</p>
                             <input type="range" min="0" max="5" value={airPollution} disabled={true} className="airQualSlider"></input>
                         </div>
 
@@ -310,9 +312,9 @@ const WeatherComponent = (props) => {
 
 
             <button className="expandButton" onClick={() => setIsExpanded(!isExpanded)}>
-                {isExpanded ? '-' : '+'}
+                {isExpanded ? <FontAwesomeIcon icon={faMinimize} />: <FontAwesomeIcon icon={faExpand} />}
             </button>
-            <button className="delete" onClick={onDelete}>X</button>
+            <button className="delete" onClick={onDelete}><FontAwesomeIcon icon={faSquareMinus} /></button>
         </div>
     );
 };

@@ -29,7 +29,7 @@
   border: none;
   font-size: 20px;
   margin-bottom: 40px;
-  background-color: #ffffff;
+  background-color: rgba(211, 211, 211, 0.4);
   border: 1px solid #2D5987;
   border-radius: 10px;
   color: #2D5987;
@@ -347,8 +347,8 @@
 
 
 .sunIcon {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
 }
 
 .airQuality {
@@ -412,7 +412,7 @@
   width: 9px;
   height: 9px;
   background-color: #2D5987;
-  outline: 3px solid #ffd7b5;
+  outline: 3px solid rgba(255, 215, 181, 0.85);
   border-radius: 50%;
 }
 
@@ -422,14 +422,13 @@
   position: absolute;
   top: 5px;
   right: 27px;
-  border-radius: 50%;
   border: none;
-  font-size: 20px;
-  background-color: #ffffff;
-  color: #2D5987;
+  font-size: 15px;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
 }
 
 .delete {
@@ -440,9 +439,9 @@
   top: 5px;
   border-radius: 50%;
   border: none;
-  font-size: 12px;
-  background-color: #ffffff;
-  color: #2D5987;
+  font-size: 15px;
+  background-color: transparent;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -451,9 +450,10 @@
 
 .delete:hover,
 .expandButton:hover {
-  background-color: #ffd7b5;
-  color: #ffffff;
+  font-size: 25px;
+  cursor: pointer;
 }
+
 
 
 @media screen and (max-width: 1000px) {
@@ -482,6 +482,12 @@
     grid-column: span 2;
     grid-row: span 3;
     order: 3;
+  }
+
+  .dailyTemps p {
+    font-size: 15px;
+    margin-right: 10px;
+
   }
 
   .humidity {
@@ -518,12 +524,22 @@
   .pressure {
     order: 11;
   }
-  .numval {
+  
+  .sunIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .airQualVal {
     font-size: 20px;
   }
 
   .airQualSlider {
-    display: none;
+    width: 70%;
+  }
+
+  .airQuality .airQualSlider {
+    margin-top: 20px;
   }
 }
 
@@ -539,18 +555,21 @@
   }
 
   .gridWrapper {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     overflow: scroll;
     
   }
 
   .forecast {
-    grid-row: span 3;
+    grid-row: span 1;
+
+    order: 1;
   }
   
   .dailyForecast {
     grid-row: span 2;
     grid-column: span 2;
+    order: 2;
   }
 
   .map-container {
@@ -558,6 +577,47 @@
     grid-column: span 2;    
   }
 
-  .wind {}
+  .wind {
+    grid-column: span 1;
+  }
+  
+  .windSpeed {
+    border: none;
+  }
+  .windSpeedText {
+    font-size: 20px;
+  }
+
+  .windSpeed .smallNum {
+    font-size: 10px;
+  }
+
+
+  .windDir {
+    margin-top: -10px;
+    
+  }
+  .windDir .smallNum {
+    font-size: 10px;
+  }
+
+  .arrow {
+    width: 15px;
+    height: 15px;
+    border-top: 4px solid #2D5987;
+    border-right: 4px solid #2D5987;
+    margin-right: -10px;
+
+  }
+
+  .dir {
+    margin-left: 10px;
+  }
+
+  .sunIcon {
+    width: 30px;
+    height: 30px;
+  }
+
  
 }

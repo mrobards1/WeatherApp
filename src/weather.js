@@ -89,6 +89,7 @@ function Weather() {
                       feelslike={data.main.feels_like}
                       sunrise={data.sys.sunrise}
                       sunset={data.sys.sunset}
+                      timezone={data.timezone}
                       airPollution={airPollution.list[0].main.aqi}
                       weathericon={data.weather[0].icon}
                       onDelete={() => handleDelete(componentInstances.length)}

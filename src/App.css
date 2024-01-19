@@ -1,3 +1,5 @@
+@import '~typeface-poppins/index.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -674,6 +676,17 @@
     height: 30px;
   }
 
+
+  .pressure .numval {
+    font-size: 25px;
+  }
+
+  .pressure .numval .smallNum {
+    font-size: 15px;
+  }
+
+  
+
 }
 
 @media screen and (max-width: 600px) {
@@ -712,9 +725,6 @@
 
 @media screen and (max-width: 500px) {
 
-  /* .expandButton {
-    display: none;
-  } */
 
   .gridWrapper {
     grid-template-columns: repeat(2, 1fr);

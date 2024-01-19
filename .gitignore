@@ -1,35 +1,17 @@
-# Dependency directories
-node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Build files
-build/
-dist/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Environment variables
-.env*
+# testing
+/coverage
 
-# IDE files
-.vscode/
-.idea/
+# production
+/build
 
-# Log files
-*.log
-
-# Mac OS files
+# misc
 .DS_Store
-
-# Jest test results
-test-results/
-
-# Ignore yarn error logs
-yarn-error.log
-
-# Ignore coverage directory
-coverage/
-
 .env.local
 
-/node_modules
-
-# eslint cache
-.eslintcache

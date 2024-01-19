@@ -2,7 +2,7 @@ import React from "react";
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faMinimize, faSquareMinus } from '@fortawesome/free-solid-svg-icons';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DateTime } from 'luxon';
 import './App.css'
 
@@ -15,6 +15,8 @@ const WeatherComponent = (props) => {
     // const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
     const iconBaseUrl = "https://openweathermap.org/img/wn/";
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
 
 
 
@@ -61,8 +63,6 @@ const WeatherComponent = (props) => {
     }
 
     function sunTime(dt, timezone) {
-    
-
         const localDateTime = DateTime.fromSeconds(dt, { zone: timezone });
         let formattedTime = localDateTime.toLocaleString({ hour: 'numeric', minute: 'numeric', hour12: true });
 
@@ -71,23 +71,7 @@ const WeatherComponent = (props) => {
     }
 
 
-
-
-    const sunriseMill = sunrise * 1000;
-    const sunrisedate = new Date(sunriseMill);
-
-    const sunsetMill = sunset * 1000;
-    const sunsetdate = new Date(sunsetMill);
-
-    const options = {
-        hour: 'numeric',
-        minute: 'numeric',
-        timeZone: 'UTC'
-    };
-
-    const formattedSunrise = sunrisedate.toLocaleTimeString('en-US', options);
-    const formattedSunset = sunsetdate.toLocaleTimeString('en-US', options);
-
+    console.log(timezone);
 
 
 
@@ -156,8 +140,6 @@ const WeatherComponent = (props) => {
 
         return windDir;
     };
-
-
 
 
 
@@ -270,7 +252,7 @@ const WeatherComponent = (props) => {
                             <p className="sunriseTitle">Sunrise</p>
                             {/* <p>{sunriseHours}:{sunriseMinutes} AM UTC</p> */}
                             <p className="sunTime"><span className="sunTimeVal">{sunTime(sunrise, timezone)}</span></p>
-                            
+
                             <img className="sunIcon" src="/img/sunrise.png" alt="Sunrise Image"></img>
 
                         </div>
@@ -302,7 +284,6 @@ const WeatherComponent = (props) => {
 
                         <div className="airQuality">
                             <p className="airQualityTitle">Air Quality</p>
-                            {/* <p>{airPollution}</p> */}
                             <p className="airQualVal numval">{airQuality(airPollution)}</p>
                             <input type="range" min="0" max="5" value={airPollution} disabled={true} className="airQualSlider"></input>
                         </div>

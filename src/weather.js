@@ -1,5 +1,6 @@
-import React, { useState, useEffect} from "react";
-
+import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleInfo, faMinimize} from '@fortawesome/free-solid-svg-icons';
 import WeatherComponent from './weathercomponent';
 import './App.css';
 
@@ -17,6 +18,7 @@ function Weather() {
   const [isCityError, setIsCityError] = useState(false);
   const [airPollution, setAirPollution] = useState({});
   const [componentInstances, setComponentInstances] = useState([]);
+  const [isInfoExpanded, setIsInfoExpanded] = useState(false);
 
   useEffect(() => {
     if (isDuplicate) {
@@ -24,7 +26,7 @@ function Weather() {
         setIsDuplicate(false);
       }, 3000); // Clear the duplicate message after 3 seconds
     }
-    
+
     if (isCityError) {
       setTimeout(() => {
         setIsCityError(false);
@@ -64,10 +66,6 @@ function Weather() {
             .then((response) => response.json())
             .then((forecastData) => {
               setForecastData(forecastData);
-
-
-              
-
               fetch(
                 `http://api.openweathermap.org/data/2.5/air_pollution?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`
               )
@@ -89,7 +87,7 @@ function Weather() {
                       feelslike={data.main.feels_like}
                       sunrise={data.sys.sunrise}
                       sunset={data.sys.sunset}
-                      timezone={data.timezone}
+                      timezone={forecastData.timezone}
                       airPollution={airPollution.list[0].main.aqi}
                       weathericon={data.weather[0].icon}
                       onDelete={() => handleDelete(componentInstances.length)}
@@ -118,6 +116,7 @@ function Weather() {
     setComponentInstances(updatedInstances);
   }
 
+
   return (
     <div className="container">
       <div className="App">
@@ -128,6 +127,20 @@ function Weather() {
           value={city}
           onKeyDown={getWeather}
         />
+
+        <div>
+          {isInfoExpanded ? (
+            <div className="infoDivExpanded">
+              <p>For greater precision in selecting a city, enter the city's name followed by a comma and a two-letter country code. <br /> <br />Example: San Francisco, US <br />
+                <br />Please be aware that certain information displayed is limited due to the API service. For example, the visibility reading is capped at six miles due to the constraints of the service utilized.</p>
+              <button onClick={() => setIsInfoExpanded(!isInfoExpanded)} className="collapseButton"><FontAwesomeIcon icon={faMinimize}></FontAwesomeIcon></button>
+            </div>
+          ) : (
+            <button className="infoButton" onClick={() => setIsInfoExpanded(true)}>
+            <FontAwesomeIcon icon={faCircleInfo}></FontAwesomeIcon>
+            </button>
+          )}
+        </div>
 
         {isDuplicate && (
           <div>
@@ -141,7 +154,7 @@ function Weather() {
           </div>
         )}
 
-      
+
         {componentInstances.map((component, index) => (
           React.cloneElement(component, { onDelete: () => handleDelete(index) })
         ))}

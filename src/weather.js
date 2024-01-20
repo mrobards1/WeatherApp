@@ -67,7 +67,7 @@ function Weather() {
             .then((forecastData) => {
               setForecastData(forecastData);
               fetch(
-                `http://api.openweathermap.org/data/2.5/air_pollution?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`
+                `https://api.openweathermap.org/data/2.5/air_pollution?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApi.key}&units=imperial`
               )
                 .then((response) => response.json())
                 .then((airPollution) => {

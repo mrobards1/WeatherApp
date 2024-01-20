@@ -2,7 +2,7 @@ import React from "react";
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faMinimize, faSquareMinus } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { DateTime } from 'luxon';
 import './App.css'
 
@@ -15,18 +15,13 @@ const WeatherComponent = (props) => {
     // const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
     const iconBaseUrl = "https://openweathermap.org/img/wn/";
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-
-
-
 
     const center = {
         lat: parseFloat(lat),
         lng: parseFloat(lon),
     };
 
-    const { isLoaded, loadError } = useLoadScript({
+    const {} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
         libraries,
     });

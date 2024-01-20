@@ -11,12 +11,12 @@ function Weather() {
   };
 
 
-  const [weatherData, setWeatherData] = useState({});
+  const [, setWeatherData] = useState({});
   const [city, setCity] = useState("");
-  const [forecastData, setForecastData] = useState({});
+  const [, setForecastData] = useState({});
   const [isDuplicate, setIsDuplicate] = useState(false);
   const [isCityError, setIsCityError] = useState(false);
-  const [airPollution, setAirPollution] = useState({});
+  const [, setAirPollution] = useState({});
   const [componentInstances, setComponentInstances] = useState([]);
   const [isInfoExpanded, setIsInfoExpanded] = useState(false);
 

@@ -21,10 +21,10 @@ const WeatherComponent = (props) => {
         lng: parseFloat(lon),
     };
 
-    const {} = useLoadScript({
+    useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
         libraries,
-    });
+      });
 
     const getDate = (index) => {
 
@@ -248,7 +248,7 @@ const WeatherComponent = (props) => {
                             {/* <p>{sunriseHours}:{sunriseMinutes} AM UTC</p> */}
                             <p className="sunTime"><span className="sunTimeVal">{sunTime(sunrise, timezone)}</span></p>
 
-                            <img className="sunIcon" src="/img/sunrise.png" alt="Sunrise Image"></img>
+                            <img className="sunIcon" src="/img/sunrise.png" alt="Sunrise"></img>
 
                         </div>
 
@@ -256,7 +256,7 @@ const WeatherComponent = (props) => {
                             <p className="sunsetTitle">Sunset</p>
                             {/* <p>{sunsetHours}:{sunsetMinutes} PM UTC</p> */}
                             <p className="sunTime"><span className="sunTimeVal">{sunTime(sunset, timezone)}</span></p>
-                            <img className="sunIcon" src="/img/sunset.png" alt="Sunset Image"></img>
+                            <img className="sunIcon" src="/img/sunset.png" alt="Sunset"></img>
 
 
 

@@ -51,7 +51,7 @@
 .infoDivExpanded {
   background-color: rgba(45, 89, 135, 0.7);
   width: 500px;
-  height: 200px;
+  height: 270px;
   margin-bottom: 35px;
   padding: 30px 10px 30px 10px;
   border-radius: 10px;
@@ -139,7 +139,7 @@
 }
 
 .temperature.expandedTemp {
-  font-size: 66px;
+  font-size: 75px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -148,6 +148,16 @@
   top: 65px;
   color: white;
 }
+
+.temp {
+  position: relative;
+}
+
+.temp::after {
+  position: absolute;
+  content: '\00B0';
+}
+
 
 
 .weatherSec {
@@ -179,18 +189,28 @@
 }
 
 .conditions {
-  display: inline-block;
-  margin-top: 15px;
+  margin-top: -40px;
+  color: white;
+  font-size: 18px;
 }
 
-.weatherIcon {
-  width: 60px;
-  height: 60px;
-  vertical-align: middle;
-
-
+.expandedConditions {
+  margin-top: 45px;
+  
 }
 
+
+.highLow {
+  display: none;
+  
+}
+
+.expandedHighLow {
+  color: white;
+  display: block;
+  padding-bottom: 30px;
+  font-size: 18px;
+}
 
 
 .expandedDiv {
@@ -414,10 +434,6 @@
   border-radius: 10px;
 }
 
-.conditionMain {
-  color: white;
-  font-size: 18px;
-}
 
 .windTitle,
 .sunriseTitle,

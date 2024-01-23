@@ -89,7 +89,6 @@ function Weather() {
                       sunset={data.sys.sunset}
                       timezone={forecastData.timezone}
                       airPollution={airPollution.list[0].main.aqi}
-                      weathericon={data.weather[0].icon}
                       onDelete={() => handleDelete(componentInstances.length)}
                       lon={data.coord.lon}
                       lat={data.coord.lat}
@@ -132,6 +131,7 @@ function Weather() {
           {isInfoExpanded ? (
             <div className="infoDivExpanded">
               <p>For greater precision in selecting a city, enter the city's name followed by a comma and a two-letter country code. <br /> <br />Example: San Francisco, US <br />
+              <br /> Each weather request has an option to expand for more additional details or delete, which are located in the upper right corner of each weather section. <br />
                 <br />Please be aware that certain information displayed is limited due to the API service. For example, the visibility reading is capped at six miles due to the constraints of the service utilized.</p>
               <button onClick={() => setIsInfoExpanded(!isInfoExpanded)} className="collapseButton"><FontAwesomeIcon icon={faMinimize}></FontAwesomeIcon></button>
             </div>

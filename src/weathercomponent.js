@@ -2,7 +2,7 @@ import React from "react";
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faMinimize, faSquareMinus } from '@fortawesome/free-solid-svg-icons';
-import { useState} from "react";
+import { useState } from "react";
 import { DateTime } from 'luxon';
 import './App.css'
 
@@ -10,7 +10,7 @@ import './App.css'
 const libraries = ['places'];
 
 const WeatherComponent = (props) => {
-    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelslike, sunrise, sunset, timezone, airPollution, weathericon, lon, lat, forecastDataList, onDelete, visibility } = props;
+    const { city, country, temperature, conditions, windspeed, winddeg, pressure, humidity, feelslike, sunrise, sunset, timezone, airPollution, lon, lat, forecastDataList, onDelete, visibility } = props;
 
     // const navigate = useNavigate();
     const [isExpanded, setIsExpanded] = useState(false);
@@ -24,7 +24,7 @@ const WeatherComponent = (props) => {
     useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
         libraries,
-      });
+    });
 
     const getDate = (index) => {
 
@@ -142,11 +142,18 @@ const WeatherComponent = (props) => {
 
         <div className={`weatherDiv ${isExpanded ? 'expandedDiv' : ''}`}>
             <p className={`city ${isExpanded ? 'expandedCity' : ''}`}>{city}, {country}</p>
-            <p className={`temperature ${isExpanded ? 'expandedTemp' : ''}`}>{temperature + '\u00B0'}</p>
+            <div className={`temperature ${isExpanded ? 'expandedTemp' : ''}`}>
+                {isExpanded ? (
+                    <span className="temp">{temperature}</span>
+                ) : (
+                    <p className="temperature">{temperature}&deg;</p>
+                )}
+            </div>
+
             <div className={`weatherSec ${isExpanded ? 'expandedWeatherSec' : ''}`}>
-                <p className={`conditions ${isExpanded ? 'expandedConditions' : ''}`}>
-                    <span className="conditionMain">{conditions}</span>
-                    <img className="weatherIcon" src={`${iconBaseUrl}${weathericon}@2x.png`} alt="Weather Icon" />
+                <p className={`conditions ${isExpanded ? 'expandedConditions' : ''}`}>{conditions}</p>
+                <p className={`highLow ${isExpanded ? 'expandedHighLow' : ''}`}>
+                    L:{Math.round(forecastDataList.daily[0].temp.min) + '\u00B0'} &nbsp; M:{Math.round(forecastDataList.daily[0].temp.max) + '\u00B0'}
                 </p>
                 {isExpanded && (
 

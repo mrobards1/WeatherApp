@@ -66,9 +66,6 @@ const WeatherComponent = (props) => {
     }
 
 
-    console.log(timezone);
-
-
 
     const airQuality = (airPollution) => {
         let airQual = '';
@@ -153,7 +150,7 @@ const WeatherComponent = (props) => {
             <div className={`weatherSec ${isExpanded ? 'expandedWeatherSec' : ''}`}>
                 <p className={`conditions ${isExpanded ? 'expandedConditions' : ''}`}>{conditions}</p>
                 <p className={`highLow ${isExpanded ? 'expandedHighLow' : ''}`}>
-                    L:{Math.round(forecastDataList.daily[0].temp.min) + '\u00B0'} &nbsp; M:{Math.round(forecastDataList.daily[0].temp.max) + '\u00B0'}
+                    L:{Math.round(forecastDataList.daily[0].temp.min) + '\u00B0'} &nbsp; H:{Math.round(forecastDataList.daily[0].temp.max) + '\u00B0'}
                 </p>
                 {isExpanded && (
 

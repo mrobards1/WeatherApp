@@ -225,7 +225,7 @@
 .gridWrapper {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 100px);
+  grid-template-rows: repeat(5, 100px);
   width: 85%;
   justify-content: center;
   margin: 0 auto;
@@ -508,7 +508,7 @@
 
 .delete:hover,
 .expandButton:hover {
-  font-size: 25px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -770,6 +770,31 @@
     overflow: visible;
   }
 
+  .infoDivExpanded {
+    width: 300px;
+    margin-top: 50px;
+    
+   
+  }
+
+  .infoDivExpanded::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none; /* Ensure the gradient doesn't interfere with interactions */
+  }
+
+
+  .infoDivExpanded p {
+    overflow: scroll;
+    
+  }
+
+ 
 
 
 

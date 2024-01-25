@@ -11,7 +11,7 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(#ffffff, #ffd7b5, #ffb38a);
+  background: linear-gradient(#ffffff, #ffd89b, #5e87a2);
 }
 
 
@@ -229,7 +229,7 @@
   width: 85%;
   justify-content: center;
   margin: 0 auto;
-  grid-gap: 10px;
+  grid-gap: 11px;
   overflow: hidden;
 }
 
@@ -753,16 +753,13 @@
 
   .expandedDiv {
     width: 370px;
-    height: 1200px;
+    height: 1125px;
   }
 
   .forecast {
     grid-column: span 2;
   }
 
-  .dailyForecast {
-    grid-column: span 2;
-  }
 
   .city.expandedCity {
     font-size: 25px;
@@ -793,6 +790,11 @@
     overflow: scroll;
     
   }
+
+  .dailyIcon {
+    margin-left: 20px !important;
+}
+
 
  
 

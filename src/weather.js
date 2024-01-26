@@ -136,7 +136,7 @@ function Weather() {
               <button onClick={() => setIsInfoExpanded(!isInfoExpanded)} className="collapseButton"><FontAwesomeIcon icon={faMinimize}></FontAwesomeIcon></button>
             </div>
           ) : (
-            <button className="infoButton" onClick={() => setIsInfoExpanded(true)}>
+            <button id="infoButton"  aria-label="Information Button" onClick={() => setIsInfoExpanded(true)}>
             <FontAwesomeIcon icon={faCircleInfo}></FontAwesomeIcon>
             </button>
           )}

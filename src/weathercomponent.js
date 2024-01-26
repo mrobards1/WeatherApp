@@ -302,10 +302,10 @@ const WeatherComponent = (props) => {
 
 
 
-            <button className="expandButton" onClick={() => setIsExpanded(!isExpanded)}>
+            <button id="expandButton"  aria-label="Expand/Minimize" onClick={() => setIsExpanded(!isExpanded)}>
                 {isExpanded ? <FontAwesomeIcon icon={faMinimize} /> : <FontAwesomeIcon icon={faExpand} />}
             </button>
-            <button className="delete" onClick={onDelete}><FontAwesomeIcon icon={faSquareMinus} /></button>
+            <button id="delete" aria-label="Delete" onClick={onDelete}><FontAwesomeIcon icon={faSquareMinus} /></button>
         </div>
     );
 };

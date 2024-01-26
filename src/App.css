@@ -43,13 +43,13 @@
   background-color: transparent;
   border: none;
   font-size: 18px;
-  color: #2D5987;
+  color: rgba(45, 89, 135, 0.9);
   margin-bottom: 35px;
 }
 
 
 .infoDivExpanded {
-  background-color: rgba(45, 89, 135, 0.7);
+  background-color: rgba(45, 89, 135, 0.4);
   width: 500px;
   height: 270px;
   margin-bottom: 35px;
